@@ -1,10 +1,4 @@
 require 'test_helper'
-require 'vcr'
-
-VCR.configure do |config|
-  config.cassette_library_dir = "vcr_cassettes"
-  config.hook_into :webmock
-end
 
 class ScraperTest < ActiveSupport::TestCase
   test 'gets page content' do
@@ -12,8 +6,10 @@ class ScraperTest < ActiveSupport::TestCase
       doc = Scraper.scrape('https://stpaul.legistar.com/Calendar.aspx')
 
       md = doc.at('.rgMasterTable a:contains("details")').text.strip
+      rows = doc.css('.rgMasterTable tbody tr')
 
       assert_equal 'Meeting details', md
+      assert_equal 11, rows.count
     end
   end
 
