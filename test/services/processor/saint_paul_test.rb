@@ -5,7 +5,7 @@ require 'test_helper'
 class Processor::SaintPaulTest < ActiveSupport::TestCase
   setup do
     VCR.use_cassette('stp_legistar') do
-      doc = Scraper.scrape('https://stpaul.legistar.com/Calendar.aspx')
+      doc = Scraper.scrape("#{Processor::SaintPaul::URL}#{Processor::SaintPaul::MAIN}")
       @p = Processor::SaintPaul.new doc
     end
   end

@@ -2,6 +2,9 @@
 
 module Processor
   class SaintPaul
+    URL = 'https://stpaul.legistar.com/'
+    MAIN = 'Calendar.aspx'
+
     # requires nokogiri document
     def initialize(doc)
       @doc = doc
