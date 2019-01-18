@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class MeetingsControllerTest < ActionDispatch::IntegrationTest
@@ -5,17 +7,17 @@ class MeetingsControllerTest < ActionDispatch::IntegrationTest
     @meeting = meetings(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get meetings_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_meeting_url
     assert_response :success
   end
 
-  test "should create meeting" do
+  test 'should create meeting' do
     assert_difference('Meeting.count') do
       post meetings_url, params: { meeting: { agenda: @meeting.agenda, date: @meeting.date, details: @meeting.details, minutes: @meeting.minutes, name: @meeting.name } }
     end
@@ -23,22 +25,22 @@ class MeetingsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to meeting_url(Meeting.last)
   end
 
-  test "should show meeting" do
+  test 'should show meeting' do
     get meeting_url(@meeting)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_meeting_url(@meeting)
     assert_response :success
   end
 
-  test "should update meeting" do
+  test 'should update meeting' do
     patch meeting_url(@meeting), params: { meeting: { agenda: @meeting.agenda, date: @meeting.date, details: @meeting.details, minutes: @meeting.minutes, name: @meeting.name } }
     assert_redirected_to meeting_url(@meeting)
   end
 
-  test "should destroy meeting" do
+  test 'should destroy meeting' do
     assert_difference('Meeting.count', -1) do
       delete meeting_url(@meeting)
     end

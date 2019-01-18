@@ -21,6 +21,20 @@ module Processor
       end
     end
 
+    # requires nokogiri object
+    def self.extract_meeting_detail_data(row)
+      tds = row.css('td')
+      {}.tap do |a|
+        a[:file_number] = tds.first.text.strip
+        a[:version] = tds[1].text.strip
+        a[:name] = tds[3].text.strip
+        a[:type] = tds[4].text.strip
+        a[:title] = tds[5].text.strip
+        a[:action] = tds[6].text.strip.chomp
+        a[:result] = tds[7].text.strip.chomp
+      end
+    end
+
     # optional name of board/commission/committee/council/etc.
     # corresponds to Name column in UI
     def get_meeting_rows(name = nil)

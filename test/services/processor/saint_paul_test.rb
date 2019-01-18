@@ -39,7 +39,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal 4, rows.count
   end
 
-  test 'extract meeting details some nil' do
+  test 'extract meeting data some nil' do
     rows = @p.get_meeting_rows 'City Council'
     d = Processor::SaintPaul.extract_meeting_data rows.first
 
@@ -50,7 +50,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_nil d[:minutes]
   end
 
-  test 'extract meeting details none nil' do
+  test 'extract meeting data none nil' do
     rows = @p.get_meeting_rows 'City Council'
     d = Processor::SaintPaul.extract_meeting_data rows[2]
 
@@ -61,9 +61,26 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal "#{Processor::SaintPaul::URL}View.ashx?M=M&ID=670017&GUID=8FE16495-705F-4767-8C64-1A83376FB8F7", d[:minutes]
   end
 
+  test 'extract meeting detail data some nil' do
+    m = @p.get_meeting_rows('City Council').first
+    url = Processor::SaintPaul.extract_meeting_data(m)[:details]
+    VCR.use_cassette('stp_legistar_details') do
+      d = Processor::SaintPaul.get_meeting_detail_rows url, /^Resolution LH/
+      r = Processor::SaintPaul.extract_meeting_detail_data(d.first)
+
+      assert_equal 'RLH VO 18-61', r[:file_number]
+      assert_equal '2', r[:version]
+      assert_equal '602 Bush Ave.', r[:name]
+      assert_equal 'Resolution LH Vacate Order', r[:type]
+      assert_equal 'Appeal of Roberto Rodriguez to a Revocation of Fire Certificate of Occupancy and Order to Vacate at 602 BUSH AVENUE.', r[:title]
+      assert       r[:action].blank?
+      assert       r[:result].blank?
+    end
+  end
+
   test 'parse date string' do
-    assert_equal Date.new(2019, 01, 30),
-      Processor::SaintPaul.send(:parse_date, '1/30/2019')
+    assert_equal Date.new(2019, 0o1, 30),
+                 Processor::SaintPaul.send(:parse_date, '1/30/2019')
   end
 
   test 'persist' do
@@ -72,14 +89,14 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
       date: '02/20/2019',
       details: 'https://www.example.com/test_deets',
       agenda: 'https://www.example.com/test_a',
-      minutes: 'https://www.example.com/test_m',
+      minutes: 'https://www.example.com/test_m'
     }
     Processor::SaintPaul.send(:persist, d)
 
     r = Meeting.last
 
     assert_equal d[:name], r.name
-    assert_equal Date.new(2019, 02, 20), r.date
+    assert_equal Date.new(2019, 0o2, 20), r.date
     assert_equal d[:details], r.details
     assert_equal d[:agenda], r.agenda
     assert_equal d[:minutes], r.minutes
