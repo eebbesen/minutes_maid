@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_132343) do
+ActiveRecord::Schema.define(version: 2019_01_18_141527) do
+
+  create_table "items", force: :cascade do |t|
+    t.string "file_number"
+    t.integer "version"
+    t.string "name"
+    t.string "item_type"
+    t.string "title"
+    t.string "action"
+    t.string "result"
+    t.integer "meeting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meeting_id"], name: "index_items_on_meeting_id"
+  end
 
   create_table "meetings", force: :cascade do |t|
     t.string "name"
@@ -18,7 +32,6 @@ ActiveRecord::Schema.define(version: 2019_01_18_132343) do
     t.string "details"
     t.string "agenda"
     t.string "minutes"
-    t.string "string"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

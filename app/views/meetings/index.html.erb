@@ -10,7 +10,6 @@
       <th>Details</th>
       <th>Agenda</th>
       <th>Minutes</th>
-      <th>String</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +22,6 @@
         <td><%= meeting.details %></td>
         <td><%= meeting.agenda %></td>
         <td><%= meeting.minutes %></td>
-        <td><%= meeting.string %></td>
         <td><%= link_to 'Show', meeting %></td>
         <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
         <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>

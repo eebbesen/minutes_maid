@@ -23,7 +23,7 @@ module Processor
 
     # optional name of board/commission/committee/council/etc.
     # corresponds to Name column in UI
-    def get_rows(name = nil)
+    def get_meeting_rows(name = nil)
       return @doc.css('.rgMasterTable tbody tr') unless name
 
       @doc.css('.rgMasterTable tbody tr').select do |r|

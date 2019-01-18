@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File number:</strong>
+  <%= @item.file_number %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @item.version %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @item.item_type %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @item.action %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @item.result %>
+</p>
+
+<p>
+  <strong>Meeting:</strong>
+  <%= @item.meeting %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

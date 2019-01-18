@@ -11,16 +11,16 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
   end
 
   test 'gets rows' do
-    assert_equal 11, @p.get_rows.count
+    assert_equal 11, @p.get_meeting_rows.count
   end
 
   test 'filters rows' do
-    rows = @p.get_rows 'City Council'
+    rows = @p.get_meeting_rows 'City Council'
     assert_equal 4, rows.count
   end
 
   test 'extract details some nil' do
-    rows = @p.get_rows 'City Council'
+    rows = @p.get_meeting_rows 'City Council'
     d = Processor::SaintPaul.extract_details rows.first
 
     assert_equal 'City Council', d[:name]
@@ -31,7 +31,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
   end
 
   test 'extract details none nil' do
-    rows = @p.get_rows 'City Council'
+    rows = @p.get_meeting_rows 'City Council'
     d = Processor::SaintPaul.extract_details rows[2]
 
     assert_equal 'City Council', d[:name]
