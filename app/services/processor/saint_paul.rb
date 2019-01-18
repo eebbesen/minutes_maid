@@ -31,6 +31,19 @@ module Processor
       end
     end
 
+    def self.get_meeting_detail_rows(url, type = nil)
+      doc = Scraper.scrape(url)
+      # page has two tabs (Meeting Items and Public Comments)
+      # just get first
+      rows = doc.css('.rgMasterTable tbody').first.css('tr')
+      if type
+        rows = rows.select do |r|
+          /^Resolution LH/.match(r.css('td')[4].text.strip)
+        end
+      end
+      rows
+    end
+
     private_class_method def self.persist(data)
       d = data.clone
       d[:date] = parse_date(d[:date])

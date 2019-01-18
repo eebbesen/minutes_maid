@@ -14,6 +14,16 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal 11, @p.get_meeting_rows.count
   end
 
+  test 'gets meeting detail rows' do
+    m = @p.get_meeting_rows('City Council').first
+    url = Processor::SaintPaul.extract_meeting_details(m)[:details]
+    VCR.use_cassette('stp_legistar_details') do
+      d = Processor::SaintPaul.get_meeting_detail_rows url
+
+      assert_equal 25, d.count
+    end
+  end
+
   test 'filters meeting rows' do
     rows = @p.get_meeting_rows 'City Council'
     assert_equal 4, rows.count
