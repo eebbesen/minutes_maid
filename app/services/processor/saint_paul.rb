@@ -15,12 +15,10 @@ module Processor
       {}.tap do |a|
         a[:name] = row.css('td').first.text.strip
         a[:date] = row.css('.rgSorted').text
-        a[:details] = row.at('a:contains("details")').attributes['href'].text
-        a[:agenda] = row.at('a:contains("Agenda")').attributes['href'].text
-        min = row.at('a:contains("Minutes")')
-        a[:minutes] = min ? row.at('a:contains("Minutes")').attributes['href'].text : nil
-        vid = row.at('a:contains("Video")')
-        a[:minutes] = vid ? row.at('a:contains("Video")').attributes['href'].text : nil
+        a[:details] = urlify(row.at('a:contains("details")'))
+        a[:agenda] = urlify(row.at('a:contains("Agenda")'))
+        a[:minutes] = urlify(row.at('a:contains("Minutes")'))
+        a[:video] = urlify(row.at('a:contains("Video")'))
       end
     end
 
@@ -31,6 +29,13 @@ module Processor
       @doc.css('.rgMasterTable tbody tr').select do |r|
         r.css('td').first.text.strip == name
       end
+    end
+
+    private
+
+    def urlify(row)
+      return nil if row.nil?
+      "#{URL}#{row.attributes['href'].text}"
     end
   end
 end

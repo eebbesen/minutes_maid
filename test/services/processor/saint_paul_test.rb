@@ -25,8 +25,8 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
     assert_equal 'City Council', d[:name]
     assert_equal '1/23/2019', d[:date]
-    assert_equal 'MeetingDetail.aspx?ID=673702&GUID=175B19CE-A034-4C76-B59D-EB264420F691&Options=info&Search=', d[:details]
-    assert_equal 'View.ashx?M=A&ID=673702&GUID=175B19CE-A034-4C76-B59D-EB264420F691', d[:agenda]
+    assert_equal "#{Processor::SaintPaul::URL}MeetingDetail.aspx?ID=673702&GUID=175B19CE-A034-4C76-B59D-EB264420F691&Options=info&Search=", d[:details]
+    assert_equal "#{Processor::SaintPaul::URL}View.ashx?M=A&ID=673702&GUID=175B19CE-A034-4C76-B59D-EB264420F691", d[:agenda]
     assert_nil d[:minutes]
     assert_nil d[:video]
   end
