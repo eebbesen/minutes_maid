@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ScraperTest < ActiveSupport::TestCase
@@ -12,5 +14,4 @@ class ScraperTest < ActiveSupport::TestCase
       assert_equal 11, rows.count
     end
   end
-
 end

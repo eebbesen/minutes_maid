@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class Processor::SaintPaulTest < ActiveSupport::TestCase
@@ -28,5 +30,4 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_nil d[:minutes]
     assert_nil d[:video]
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Processor
   class SaintPaul
     # requires nokogiri document
@@ -22,6 +24,7 @@ module Processor
     # optional name of board/commission/committee/council/etc.
     def get_rows(name = nil)
       return @doc.css('.rgMasterTable tbody tr') unless name
+
       @doc.css('.rgMasterTable tbody tr').select do |r|
         r.css('td').first.text.strip == name
       end
