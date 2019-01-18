@@ -11,7 +11,7 @@ module Processor
     end
 
     # requires nokogiri object
-    def self.extract_details(row)
+    def self.extract_meeting_details(row)
       {}.tap do |a|
         a[:name] = row.css('td').first.text.strip
         a[:date] = row.css('.rgSorted').text
@@ -31,7 +31,7 @@ module Processor
       end
     end
 
-    def self.persist(data)
+    private_class_method def self.persist(data)
       d = data.clone
       d[:date] = parse_date(d[:date])
       Meeting.new(d).save!

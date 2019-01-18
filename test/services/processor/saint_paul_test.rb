@@ -10,18 +10,18 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     end
   end
 
-  test 'gets rows' do
+  test 'gets meeting rows' do
     assert_equal 11, @p.get_meeting_rows.count
   end
 
-  test 'filters rows' do
+  test 'filters meeting rows' do
     rows = @p.get_meeting_rows 'City Council'
     assert_equal 4, rows.count
   end
 
-  test 'extract details some nil' do
+  test 'extract meeting details some nil' do
     rows = @p.get_meeting_rows 'City Council'
-    d = Processor::SaintPaul.extract_details rows.first
+    d = Processor::SaintPaul.extract_meeting_details rows.first
 
     assert_equal 'City Council', d[:name]
     assert_equal '1/23/2019', d[:date]
@@ -30,9 +30,9 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_nil d[:minutes]
   end
 
-  test 'extract details none nil' do
+  test 'extract meeting details none nil' do
     rows = @p.get_meeting_rows 'City Council'
-    d = Processor::SaintPaul.extract_details rows[2]
+    d = Processor::SaintPaul.extract_meeting_details rows[2]
 
     assert_equal 'City Council', d[:name]
     assert_equal '1/9/2019', d[:date]
