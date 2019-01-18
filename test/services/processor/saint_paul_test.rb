@@ -18,7 +18,6 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
   end
 
   test 'extract row details' do
-    # name, date, details, agenda, minutes
     rows = @p.get_rows 'City Council'
     d = @p.extract_details(rows.first)
 
