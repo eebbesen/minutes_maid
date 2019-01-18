@@ -31,6 +31,17 @@ module Processor
       end
     end
 
+    def self.persist(data)
+      d = data.clone
+      d[:date] = parse_date(d[:date])
+      Meeting.new(d).save!
+    end
+
+    private_class_method def self.parse_date(date)
+      m, d, y = date.split('/').map(&:to_i)
+      Date.new(y, m, d)
+    end
+
     private_class_method def self.urlify(row)
       return nil if row.nil?
 

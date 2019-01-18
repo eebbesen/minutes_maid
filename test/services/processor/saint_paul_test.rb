@@ -40,4 +40,28 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal "#{Processor::SaintPaul::URL}View.ashx?M=A&ID=670017&GUID=8FE16495-705F-4767-8C64-1A83376FB8F7", d[:agenda]
     assert_equal "#{Processor::SaintPaul::URL}View.ashx?M=M&ID=670017&GUID=8FE16495-705F-4767-8C64-1A83376FB8F7", d[:minutes]
   end
+
+  test 'parse date string' do
+    assert_equal Date.new(2019, 01, 30),
+      Processor::SaintPaul.send(:parse_date, '1/30/2019')
+  end
+
+  test 'persist' do
+    d = {
+      name: 'City Council',
+      date: '02/20/2019',
+      details: 'https://www.example.com/test_deets',
+      agenda: 'https://www.example.com/test_a',
+      minutes: 'https://www.example.com/test_m',
+    }
+    Processor::SaintPaul.send(:persist, d)
+
+    r = Meeting.last
+
+    assert_equal d[:name], r.name
+    assert_equal Date.new(2019, 02, 20), r.date
+    assert_equal d[:details], r.details
+    assert_equal d[:agenda], r.agenda
+    assert_equal d[:minutes], r.minutes
+  end
 end

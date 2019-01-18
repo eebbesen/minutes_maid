@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: City Council
+  date: <%= Time.new(2019, 01, 23) %>
+  details: https://www.example.com/details
+  agenda: https://www.example.com/agenda
+  minutes: https://www.example.com/minutes
+
