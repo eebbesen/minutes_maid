@@ -11,7 +11,7 @@ module Processor
     end
 
     # requires nokogiri object
-    def self.extract_meeting_details(row)
+    def self.extract_meeting_data(row)
       {}.tap do |a|
         a[:name] = row.css('td').first.text.strip
         a[:date] = row.css('.rgSorted').text
@@ -31,6 +31,8 @@ module Processor
       end
     end
 
+    # meeting details
+    # optional type is regex, so can be partial
     def self.get_meeting_detail_rows(url, type = nil)
       doc = Scraper.scrape(url)
       # page has two tabs (Meeting Items and Public Comments)
@@ -38,7 +40,7 @@ module Processor
       rows = doc.css('.rgMasterTable tbody').first.css('tr')
       if type
         rows = rows.select do |r|
-          /^Resolution LH/.match(r.css('td')[4].text.strip)
+          type.match(r.css('td')[4].text.strip)
         end
       end
       rows

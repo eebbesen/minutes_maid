@@ -16,11 +16,21 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
   test 'gets meeting detail rows' do
     m = @p.get_meeting_rows('City Council').first
-    url = Processor::SaintPaul.extract_meeting_details(m)[:details]
+    url = Processor::SaintPaul.extract_meeting_data(m)[:details]
     VCR.use_cassette('stp_legistar_details') do
       d = Processor::SaintPaul.get_meeting_detail_rows url
 
       assert_equal 25, d.count
+    end
+  end
+
+  test 'filters meeting detail rows' do
+    m = @p.get_meeting_rows('City Council').first
+    url = Processor::SaintPaul.extract_meeting_data(m)[:details]
+    VCR.use_cassette('stp_legistar_details') do
+      d = Processor::SaintPaul.get_meeting_detail_rows url, /^Resolution LH/
+
+      assert_equal 5, d.count
     end
   end
 
@@ -31,7 +41,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
   test 'extract meeting details some nil' do
     rows = @p.get_meeting_rows 'City Council'
-    d = Processor::SaintPaul.extract_meeting_details rows.first
+    d = Processor::SaintPaul.extract_meeting_data rows.first
 
     assert_equal 'City Council', d[:name]
     assert_equal '1/23/2019', d[:date]
@@ -42,7 +52,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
   test 'extract meeting details none nil' do
     rows = @p.get_meeting_rows 'City Council'
-    d = Processor::SaintPaul.extract_meeting_details rows[2]
+    d = Processor::SaintPaul.extract_meeting_data rows[2]
 
     assert_equal 'City Council', d[:name]
     assert_equal '1/9/2019', d[:date]
