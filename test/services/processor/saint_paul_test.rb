@@ -83,7 +83,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
                  Processor::SaintPaul.send(:parse_date, '1/30/2019')
   end
 
-  test 'persist' do
+  test 'persist meeting' do
     d = {
       name: 'City Council',
       date: '02/20/2019',
@@ -91,7 +91,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
       agenda: 'https://www.example.com/test_a',
       minutes: 'https://www.example.com/test_m'
     }
-    Processor::SaintPaul.send(:persist, d)
+    Processor::SaintPaul.send(:persist_meeting, d)
 
     r = Meeting.last
 
@@ -100,5 +100,38 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal d[:details], r.details
     assert_equal d[:agenda], r.agenda
     assert_equal d[:minutes], r.minutes
+  end
+
+  test 'persist item' do
+    d = {
+      name: 'City Council',
+      date: '02/20/2019',
+      details: 'https://www.example.com/test_deets',
+      agenda: 'https://www.example.com/test_a',
+      minutes: 'https://www.example.com/test_m'
+    }
+
+    Processor::SaintPaul.send(:persist_meeting, d)
+    m = Meeting.last
+
+    id = {
+      file_number: 'RLH RR 01-02',
+      version: 2,
+      name: '20002 Marshall Avenue Remove/Repair',
+      item_type: 'Resolution LH Substantial Abatement Order',
+      title: 'Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)',
+      meeting: m
+    }
+
+    Processor::SaintPaul.send(:persist_item, id)
+
+    r = Item.last
+
+    assert_equal id[:file_number], r.file_number
+    assert_equal id[:version], r.version
+    assert_equal id[:name], r.name
+    assert_equal id[:item_type], r.item_type
+    assert_equal id[:title], r.title
+    assert_equal m.id, r.meeting.id
   end
 end

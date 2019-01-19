@@ -30,8 +30,8 @@ module Processor
         a[:name] = tds[3].text.strip
         a[:type] = tds[4].text.strip
         a[:title] = tds[5].text.strip
-        a[:action] = tds[6].text.strip.chomp
-        a[:result] = tds[7].text.strip.chomp
+        a[:action] = tds[6].text.strip
+        a[:result] = tds[7].text.strip
       end
     end
 
@@ -60,10 +60,15 @@ module Processor
       rows
     end
 
-    private_class_method def self.persist(data)
+    private_class_method def self.persist_meeting(data)
       d = data.clone
       d[:date] = parse_date(d[:date])
       Meeting.new(d).save!
+    end
+
+    private_class_method def self.persist_item(data)
+      d = data.clone
+      Item.new(d).save!
     end
 
     private_class_method def self.parse_date(date)
