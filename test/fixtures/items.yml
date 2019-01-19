@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  file_number: RLH RR 01-01
+  version: 1
+  name: 10001 Marshall Avenue Remove/Repair
+  item_type: Resolution LH Substantial Abatement Order
+  title: Ordering the rehabilitation or razing and removal of the structures at 10001 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)
+  action:
+  result:
+  meeting: one
+
