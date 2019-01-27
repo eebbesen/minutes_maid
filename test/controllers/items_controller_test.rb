@@ -9,7 +9,11 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get index' do
     get items_url
+
     assert_response :success
+    assert response.body.include? @item.file_number
+    assert response.body.include? items(:two).file_number
+    assert response.body.include? items(:three).file_number
   end
 
   test 'should get filtered index' do
