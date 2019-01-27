@@ -6,7 +6,7 @@ module Processor
     MAIN = 'Calendar.aspx'
 
     # requires nokogiri document
-    def initialize()
+    def initialize
       @doc = Processor::SaintPaul.scrape_meetings
     end
 

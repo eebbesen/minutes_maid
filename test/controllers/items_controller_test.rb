@@ -14,7 +14,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get filtered index' do
     m = meetings(:two)
-    get(items_url, params: {meeting_id: m.id})
+    get(items_url, params: { meeting_id: m.id })
 
     assert_response :success
     refute response.body.include? @item.file_number
