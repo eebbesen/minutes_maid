@@ -10,3 +10,22 @@ one:
   result:
   meeting: one
 
+two:
+  file_number: RLH RR 01-02
+  version: 1
+  name: 20002 Marshall Avenue Remove/Repair
+  item_type: Resolution LH Substantial Abatement Order
+  title: Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the February 2, 2019, City Council Public Hearing. (Public hearing continued from February 2)
+  action:
+  result:
+  meeting: two
+
+three:
+  file_number: RLH RR 01-03
+  version: 1
+  name: 30003 Marshall Avenue Remove/Repair
+  item_type: Resolution LH Substantial Abatement Order
+  title: Ordering the rehabilitation or razing and removal of the structures at 30003 MARSHALL AVENUE within fifteen (15) days after the February 2, 2019, City Council Public Hearing. (Public hearing continued from February 2)
+  action:
+  result:
+  meeting: two

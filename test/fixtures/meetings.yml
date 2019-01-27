@@ -3,7 +3,13 @@
 one:
   name: City Council
   date: <%= Time.new(2019, 01, 23) %>
-  details: https://www.example.com/details
-  agenda: https://www.example.com/agenda
-  minutes: https://www.example.com/minutes
+  details: https://www.example.com/details.1.23
+  agenda: https://www.example.com/agenda.1.23
+  minutes: https://www.example.com/minutes.1.23
 
+two:
+  name: City Council
+  date: <%= Time.new(2019, 01, 30) %>
+  details: https://www.example.com/details.1.30
+  agenda: https://www.example.com/agenda.1.30
+  minutes: https://www.example.com/minutes.1.30
