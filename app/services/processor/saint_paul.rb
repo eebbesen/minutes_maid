@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'upsert/active_record_upsert'
+
 module Processor
   class SaintPaul
     URL = 'https://stpaul.legistar.com/'
@@ -67,12 +69,12 @@ module Processor
     private_class_method def self.persist_meeting(data)
       d = data.clone
       d[:date] = parse_date(d[:date])
-      Meeting.new(d).save!
+      Meeting.where(name: d[:name], date: data[:date]).first_or_create(d)
     end
 
     private_class_method def self.persist_item(data)
       d = data.clone
-      Item.new(d).save!
+      Item.where(meeting_id: d[:meeting_id], name: d[:name]).first_or_create(d)
     end
 
     private_class_method def self.parse_date(date)

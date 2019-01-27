@@ -101,6 +101,27 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal d[:minutes], r.minutes
   end
 
+  test 'update meeting when it exists' do
+    d = {
+      name: 'City Council',
+      date: '02/20/2019',
+      details: 'https://www.example.com/test_deets',
+      agenda: 'https://www.example.com/test_a',
+      minutes: 'https://www.example.com/test_m'
+    }
+    Processor::SaintPaul.send(:persist_meeting, d)
+
+    d[:details] = 'https://wwww.example.com/updated_deets'
+
+    r = Meeting.last
+
+    assert_equal d[:name], r.name
+    assert_equal Date.new(2019, 0o2, 20), r.date
+    assert_equal d[:details], 'https://wwww.example.com/updated_deets'
+    assert_equal d[:agenda], r.agenda
+    assert_equal d[:minutes], r.minutes
+  end
+
   test 'persist item' do
     d = {
       name: 'City Council',
