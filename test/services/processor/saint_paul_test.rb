@@ -5,8 +5,7 @@ require 'test_helper'
 class Processor::SaintPaulTest < ActiveSupport::TestCase
   setup do
     VCR.use_cassette('stp_legistar') do
-      doc = Scraper.scrape("#{Processor::SaintPaul::URL}#{Processor::SaintPaul::MAIN}")
-      @p = Processor::SaintPaul.new doc
+      @p = Processor::SaintPaul.new
     end
   end
 

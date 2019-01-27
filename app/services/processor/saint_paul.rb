@@ -6,8 +6,12 @@ module Processor
     MAIN = 'Calendar.aspx'
 
     # requires nokogiri document
-    def initialize(doc)
-      @doc = doc
+    def initialize()
+      @doc = Processor::SaintPaul.scrape_meetings
+    end
+
+    def self.scrape_meetings
+      doc = Scraper.scrape "#{URL}#{MAIN}"
     end
 
     # requires nokogiri object
@@ -48,10 +52,10 @@ module Processor
     # meeting details
     # optional type is regex, so can be partial
     def self.get_meeting_detail_rows(url, type = nil)
-      doc = Scraper.scrape(url)
+      row_data = Scraper.scrape(url)
       # page has two tabs (Meeting Items and Public Comments)
       # just get first
-      rows = doc.css('.rgMasterTable tbody').first.css('tr')
+      rows = row_data.css('.rgMasterTable tbody').first.css('tr')
       if type
         rows = rows.select do |r|
           type.match(r.css('td')[4].text.strip)
