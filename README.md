@@ -1,24 +1,10 @@
-# README
+# Minutes Maid
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Collects data from meeting minutes allowing you-specific filters.
 
-Things you may want to cover:
+Currently only works for Saint Paul meeting data from https://stpaul.legistar.com/Calendar.aspx.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Populate data
+```bash
+bundle exec rake scrape_saint_paul
+```
