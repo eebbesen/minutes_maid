@@ -38,8 +38,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'foundation-rails'
 gem 'autoprefixer-rails'
+gem 'foundation-rails'
 gem 'sprockets-es6'
 
 group :development, :test do
