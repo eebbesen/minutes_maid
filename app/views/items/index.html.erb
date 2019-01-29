@@ -15,6 +15,9 @@
       <th>Version</th>
       <th>Action</th>
       <th>Result</th>
+      <% unless params['meeting_id'] %>
+      <th>Meeting</th>
+      <% end %>
     </tr>
   </thead>
 
@@ -28,6 +31,9 @@
         <td><%= item.version %></td>
         <td><%= item.action %></td>
         <td><%= item.result %></td>
+        <% unless params['meeting_id'] %>
+        <td><%= link_to "#{item.meeting.name} on #{item.meeting.date}", item.meeting %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
