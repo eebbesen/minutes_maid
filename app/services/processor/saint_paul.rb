@@ -80,6 +80,7 @@ module Processor
     private_class_method def self.persist_meeting(data)
       d = data.clone
       d[:date] = parse_date(d[:date])
+
       Meeting.where(name: d[:name], date: d[:date]).first_or_create!(d).tap do |m|
         m.assign_attributes d
         m.save! if m.changed?
