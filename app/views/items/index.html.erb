@@ -1,39 +1,36 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Items</h1>
+<% if params['meeting_id'] %>
+  <h1><%= "#{@items.first.meeting.name} on #{@items.first.meeting.date}" %></h1>
+<% else %>
+  <h1>Items</h1>
+<% end %>
 
 <table>
   <thead>
     <tr>
-      <th>File number</th>
-      <th>Version</th>
+      <th width="120">File Number</th>
       <th>Name</th>
       <th>Type</th>
       <th>Title</th>
-      <th>Meeting</th>
+      <th>Version</th>
       <th>Action</th>
       <th>Result</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.file_number %></td>
-        <td><%= item.version %></td>
+        <td><%= link_to item.file_number, item %></td>
         <td><%= item.name %></td>
         <td><%= item.item_type %></td>
         <td><%= item.title %></td>
-        <td><%= link_to "#{item.meeting.name} -- #{item.meeting.date}", meeting_path(item.meeting) %></td>
+        <td><%= item.version %></td>
         <td><%= item.action %></td>
         <td><%= item.result %></td>
-        <td><%= link_to 'Show', item %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Item', new_item_path %>
