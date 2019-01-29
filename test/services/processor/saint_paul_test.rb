@@ -5,8 +5,7 @@ require 'test_helper'
 class Processor::SaintPaulTest < ActiveSupport::TestCase
   setup do
     VCR.use_cassette('stp_legistar') do
-      doc = Scraper.scrape("#{Processor::SaintPaul::URL}#{Processor::SaintPaul::MAIN}")
-      @p = Processor::SaintPaul.new doc
+      @p = Processor::SaintPaul.new
     end
   end
 
@@ -71,7 +70,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
       assert_equal 'RLH VO 18-61', r[:file_number]
       assert_equal '2', r[:version]
       assert_equal '602 Bush Ave.', r[:name]
-      assert_equal 'Resolution LH Vacate Order', r[:type]
+      assert_equal 'Resolution LH Vacate Order', r[:item_type]
       assert_equal 'Appeal of Roberto Rodriguez to a Revocation of Fire Certificate of Occupancy and Order to Vacate at 602 BUSH AVENUE.', r[:title]
       assert       r[:action].blank?
       assert       r[:result].blank?
@@ -97,6 +96,28 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
     assert_equal d[:name], r.name
     assert_equal Date.new(2019, 0o2, 20), r.date
+    assert_equal d[:details], r.details
+    assert_equal d[:agenda], r.agenda
+    assert_equal d[:minutes], r.minutes
+  end
+
+  test 'update meeting when it exists' do
+    mc = Meeting.count
+    d = {
+      name: 'City Council',
+      date: '01/23/2019',
+      details: 'https://wwww.example.com/updated_deets',
+      agenda: 'https://www.example.com/agenda.1.23',
+      minutes: 'https://www.example.com/minutes.1.23'
+    }
+    Processor::SaintPaul.send(:persist_meeting, d)
+
+    assert_equal mc, Meeting.count
+
+    r = Meeting.where(details: d[:details]).first
+
+    assert_equal d[:name], r.name
+    assert_equal Date.new(2019, 1, 23), r.date
     assert_equal d[:details], r.details
     assert_equal d[:agenda], r.agenda
     assert_equal d[:minutes], r.minutes
@@ -133,5 +154,28 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal id[:item_type], r.item_type
     assert_equal id[:title], r.title
     assert_equal m.id, r.meeting.id
+  end
+
+  test 'update item when it exists' do
+    ic = Item.count
+    id = {
+      file_number: 'RLH RR 01-02',
+      version: 2,
+      name: '20002 Marshall Avenue Remove/Repair',
+      item_type: 'Resolution LH Substantial Abatement Order',
+      title: 'Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)',
+      meeting_id: meetings(:two).id
+    }
+
+    Processor::SaintPaul.send(:persist_item, id)
+
+    assert_equal ic, Item.count
+    r = Item.where(file_number: 'RLH RR 01-02').first
+    assert_equal id[:file_number], r.file_number
+    assert_equal id[:version], id[:version]
+    assert_equal id[:name], r.name
+    assert_equal id[:item_type], r.item_type
+    assert_equal id[:title], r.title
+    assert_equal id[:meeting_id], r.meeting.id
   end
 end

@@ -10,9 +10,9 @@
       <th>Name</th>
       <th>Type</th>
       <th>Title</th>
+      <th>Meeting</th>
       <th>Action</th>
       <th>Result</th>
-      <th>Meeting</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,12 +25,10 @@
         <td><%= item.name %></td>
         <td><%= item.item_type %></td>
         <td><%= item.title %></td>
+        <td><%= link_to "#{item.meeting.name} -- #{item.meeting.date}", meeting_path(item.meeting) %></td>
         <td><%= item.action %></td>
         <td><%= item.result %></td>
-        <td><%= item.meeting %></td>
         <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

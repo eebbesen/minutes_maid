@@ -7,6 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Date</th>
+      <th>Rows</th>
       <th>Details</th>
       <th>Agenda</th>
       <th>Minutes</th>
@@ -17,19 +18,15 @@
   <tbody>
     <% @meetings.each do |meeting| %>
       <tr>
-        <td><%= meeting.name %></td>
+        <td><%= link_to meeting.name, meeting %></td>
         <td><%= meeting.date %></td>
-        <td><%= meeting.details %></td>
-        <td><%= meeting.agenda %></td>
-        <td><%= meeting.minutes %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'deets', items_path(meeting_id: meeting.id) %></td>
+        <td><%= link_to 'DD', meeting.details %></td>
+        <td><%= link_to 'AA', meeting.agenda %></td>
+        <td><%= link_to 'MM', meeting.minutes %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Meeting', new_meeting_path %>
