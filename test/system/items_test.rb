@@ -7,8 +7,15 @@ class ItemsTest < ApplicationSystemTestCase
     @item = items(:one)
   end
 
-  test 'visiting the index' do
+  test 'visiting the items index for all items' do
     visit items_url
     assert_selector 'h1', text: 'Items'
+  end
+
+  test 'filter resolution lh' do
+    visit items_url
+    assert_equal 4, page.all(:css, 'tr.data').size
+    click_button 'Resolution LH'
+    assert_equal 3, page.all(:css, 'tr.data').size
   end
 end
