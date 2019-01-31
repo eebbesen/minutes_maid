@@ -4,7 +4,6 @@
 
 $ ->
   $('.filter-simple-button').click (e) ->
-    console.log(e.currentTarget.classList)
     $('.filter-simple-button').removeClass('is-active')
     e.currentTarget.classList.add('is-active')
     filter = e.currentTarget.dataset.filter
