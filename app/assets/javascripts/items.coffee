@@ -2,21 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-filterButton = () ->
-  document.getElementsByClassName('filter-simple-button')
-    .click(() ->
-       val = this.attribute('data-filter')
-       if val == 'all'
-          document.getElementsByClassName('item-row').forEach((i) ->
-             i.classList.remove('hidden')
-          )
-       else
-          document.getElementByClassName('item-row').forEach((i) ->
-            if i.classList.contains(val)
-              i.classList.remove('hidden')
-            else
-              i.classList.add('hidden')
-            end
-          )
-       end
-       )
+$ ->
+  $('.filter-simple-button').click (e) ->
+    console.log(e.currentTarget.classList)
+    $('.filter-simple-button').removeClass('is-active')
+    e.currentTarget.classList.add('is-active')
+    filter = e.currentTarget.dataset.filter
+    if filter == 'rlh'
+      $('tr.data').addClass('hidden')
+      $('.rlh').removeClass('hidden')
+    else
+      $('tr.data').removeClass('hidden')
+
