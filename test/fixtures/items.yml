@@ -29,3 +29,13 @@ three:
   action:
   result:
   meeting: two
+
+four:
+  file_number: Ord 01-1
+  version: 1
+  name:
+  item_type: Ordinance
+  title: Granting the application of First Last and Second Last to rezone the property at 40004 Marshall Avenue from RM2 Multi-Family Residential to BC Community Business (Converted), and amending Chapter 60 of the Legislative Code pertaining to the zoning map.
+  action:
+  result:
+  meeting: two

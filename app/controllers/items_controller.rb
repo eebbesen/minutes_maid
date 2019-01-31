@@ -9,8 +9,8 @@ class ItemsController < ApplicationController
     @items = if params[:meeting_id]
                Item.where(meeting_id: params[:meeting_id])
              else
-               Item.all
-             end
+               Item.all.order(meeting_id: :desc)
+             end.reject { |i| i.file_number.nil? }
   end
 
   # GET /items/1

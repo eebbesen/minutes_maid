@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Version:</strong>
-  <%= @item.version %>
-</p>
-
-<p>
   <strong>Name:</strong>
   <%= @item.name %>
 </p>
@@ -37,7 +32,12 @@
 
 <p>
   <strong>Meeting:</strong>
-  <%= @item.meeting %>
+  <%= @item.meeting.name %> on <%= @item.meeting.date %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @item.version %>
 </p>
 
 <%= link_to 'Back', items_path %>

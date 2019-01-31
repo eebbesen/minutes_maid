@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Processor
   class SaintPaul
     URL = 'https://stpaul.legistar.com/'
