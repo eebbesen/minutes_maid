@@ -7,10 +7,10 @@
     <tr>
       <th>Name</th>
       <th>Date</th>
-      <th>Rows</th>
-      <th>Details</th>
-      <th>Agenda</th>
-      <th>Minutes</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -19,10 +19,10 @@
       <tr>
         <td><%= link_to meeting.name, meeting %></td>
         <td><%= meeting.date %></td>
-        <td><%= link_to 'deets', items_path(meeting_id: meeting.id) %></td>
-        <td><%= link_to 'DD', meeting.details %></td>
-        <td><%= link_to 'AA', meeting.agenda %></td>
-        <td><%= link_to 'MM', meeting.minutes %></td>
+        <td><%= link_to (fa_icon('bars') + ' Rows'), items_path(meeting_id: meeting.id) %></td>
+        <td><%= link_to (fa_icon('bars') + ' Details'), meeting.details %></td>
+        <td><%= link_to (fa_icon('file') + ' Agenda'), meeting.agenda %></td>
+        <td><%= link_to (fa_icon('file') + ' Minutes'), meeting.minutes if meeting.minutes %></td>
       </tr>
     <% end %>
   </tbody>
