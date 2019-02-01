@@ -19,3 +19,10 @@ bin/rails test
 ```bash
 bin/rails test:system
 ```
+
+### Architectural notes
+#### dropdowns
+Both the item and meeting dropdown filters are based on the `hclass` function in the `Item` and `Meeting` classes. Please override this for the level of detail that you require in your dropdowns. Note that Zurb Foundation allows you to have nested dropdowns should that seem attractive to you.
+
+#### unfiltered pages
+The items index takes a fairly long amount of time to load with a relatively small number of items. You may find it judicious to set initial filter state, pagination and/or disallow display of all items (especially on one page).

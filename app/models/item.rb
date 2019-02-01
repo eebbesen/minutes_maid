@@ -7,10 +7,12 @@ class Item < ApplicationRecord
     case item_type
     when /^Resolution LH/
       'rlh'
+    when /^Resolution-Public/
+      'rlp'
     when 'Resolution'
       'res'
     else
-      'gen'
+      item_type.split(' ').first.downcase
     end
   end
 end
