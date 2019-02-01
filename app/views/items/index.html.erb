@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
-<% if params['meeting_id'] %>
-  <h1><%= "#{@items.first.meeting.name} on #{@items.first.meeting.date}" %></h1>
+<% if params['meeting_id']
+  if @items.count.positive? %>
+    <h1><%= "#{@items.first.meeting.name} on #{@items.first.meeting.date}" %></h1>
+  <% else
+    m = Meeting.find params['meeting_id'] %>
+    <h1><%= "#{m.name} on #{m.date}" %></h1>
+  <% end %>
 <% else %>
   <h1>Items</h1>
 <% end %>

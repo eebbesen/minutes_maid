@@ -1,13 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @item.name %></h1>
+
 <p>
   <strong>File number:</strong>
   <%= @item.file_number %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
 </p>
 
 <p>
@@ -40,4 +37,5 @@
   <%= @item.version %>
 </p>
 
-<%= link_to 'Back', items_path %>
+<br/>
+<%= link_to (fa_icon('arrow-left') + ' Back'), items_path %>
