@@ -10,3 +10,12 @@ button.is-active.hollow {
   font-weight: bold;
   border-width: 0.2em
 }
+
+.buttons-left {
+  float: left;
+}
+
+.buttons-right {
+  float: right;
+  padding-right: 2em;
+}

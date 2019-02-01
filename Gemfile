@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'autoprefixer-rails'
+gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'jquery-rails'
 gem 'sprockets-es6'

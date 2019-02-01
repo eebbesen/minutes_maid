@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+$(document).on "turbolinks:load", ->
   $('.filter-simple-button').click (e) ->
     $('.filter-simple-button').removeClass('is-active')
     e.currentTarget.classList.add('is-active')
