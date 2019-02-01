@@ -6,11 +6,6 @@
   display: none;
 }
 
-button.is-active.hollow {
-  font-weight: bold;
-  border-width: 0.2em
-}
-
 .buttons-left {
   float: left;
 }
@@ -18,4 +13,8 @@ button.is-active.hollow {
 .buttons-right {
   float: right;
   padding-right: 2em;
+}
+
+#item-filter {
+  width: 9em;
 }

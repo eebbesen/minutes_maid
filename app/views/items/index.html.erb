@@ -12,8 +12,12 @@
 
 <section class="filter-simple">
   <div class="button-group round buttons-left">
-    <button class="button hollow filter-simple-button is-active" data-filter="all">All</button>
-    <button class="button hollow filter-simple-button" data-filter="rlh">Resolution LH</button>
+    <select id="item-filter" class="dropdown menu button hollow" data-dropdown-menu>
+      <option value="all">All</option>
+      <option value="gen">General</option>
+      <option value="rlh">Resolution LH</option>
+      <option value="res">Resolution</option>
+    </select>
   </div>
   <div class="buttons-right">
     <%= link_to 'Meetings', meetings_path, class: 'button hollow' %>
