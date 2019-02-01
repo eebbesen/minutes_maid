@@ -1,14 +1,28 @@
 <p id="notice"><%= notice %></p>
-<% if params['meeting_id'] %>
-  <h1><%= "#{@items.first.meeting.name} on #{@items.first.meeting.date}" %></h1>
+<% if params['meeting_id']
+  if @items.count.positive? %>
+    <h1><%= "#{@items.first.meeting.name} on #{@items.first.meeting.date}" %></h1>
+  <% else
+    m = Meeting.find params['meeting_id'] %>
+    <h1><%= "#{m.name} on #{m.date}" %></h1>
+  <% end %>
 <% else %>
   <h1>Items</h1>
 <% end %>
 
 <section class="filter-simple">
   <div class="button-group round buttons-left">
-    <button class="button hollow filter-simple-button is-active" data-filter="all">All</button>
-    <button class="button hollow filter-simple-button" data-filter="rlh">Resolution LH</button>
+    <select id="item-filter" class="dropdown menu button hollow" data-dropdown-menu>
+      <option value="all">All</option>
+      <option value="approval">Approval of Minutes</option>
+      <option value="charter">Charter Commission Items</option>
+      <option value="communications">Communications & Receive/File</option>
+      <option value="ordinance">Ordinance</option>
+      <option value="rlh">Resolution LH</option>
+      <option value="rlp">Resolution PH</option>
+      <option value="res">Resolution</option>
+      <option value="staff">Staff Report</option>
+    </select>
   </div>
   <div class="buttons-right">
     <%= link_to 'Meetings', meetings_path, class: 'button hollow' %>

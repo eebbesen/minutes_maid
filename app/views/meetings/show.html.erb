@@ -1,28 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @meeting.name %>
+  <h1><%= @meeting.name %> on <%= @meeting.date %></h1>
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @meeting.date %>
+  <strong><%= link_to (fa_icon('bars') + ' Rows'), items_path(meeting_id: @meeting.id) %></strong>
 </p>
 
 <p>
-  <strong>Details:</strong>
-  <%= @meeting.details %>
+  <strong><%= link_to (fa_icon('bars') + ' Details'), @meeting.details %></strong>
 </p>
 
 <p>
-  <strong>Agenda:</strong>
-  <%= @meeting.agenda %>
+  <strong><%= link_to (fa_icon('file') + ' Agenda'), @meeting.agenda %></strong>
 </p>
 
+<% if @meeting.minutes %>
 <p>
-  <strong>Minutes:</strong>
-  <%= @meeting.minutes %>
+  <strong><%= link_to (fa_icon('file') + ' Minutes'), @meeting.minutes %></strong>
 </p>
+<% end %>
 
-<%= link_to 'Back', meetings_path %>
+<br/>
+<%= link_to (fa_icon('arrow-left') + ' Back'), meetings_path %>

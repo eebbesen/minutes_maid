@@ -17,6 +17,6 @@ class ItemTest < ActiveSupport::TestCase
   test 'computes gen hclass' do
     i = items(:one)
     i.item_type = 'Ordinance'
-    assert_equal 'gen', i.hclass
+    assert_equal 'ordinance', i.hclass
   end
 end

@@ -15,7 +15,7 @@ class ItemsTest < ApplicationSystemTestCase
   test 'filter resolution lh' do
     visit items_url
     assert_equal 4, page.all(:css, 'tr.data').size
-    click_button 'Resolution LH'
+    find(:css, '#item-filter').find(:option, 'Resolution LH').select_option
     assert_equal 3, page.all(:css, 'tr.data').size
   end
 end
