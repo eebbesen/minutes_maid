@@ -2,10 +2,29 @@
 
 <h1>Meetings</h1>
 
+<section class="filter-simple">
+  <div class="buttons-left">
+    <select id="meeting-filter" class="dropdown menu" data-dropdown-menu>
+      <option value="all">All</option>
+      <option value="water">Board Of Water Commissioners</option>
+      <option value="charter">Charter Commission</option>
+      <option value="city">City Council</option>
+      <option value="housing">Housing & Redevelopment Authority</option>
+      <option value="legislative">Legislative Hearings</option>
+      <option value="library">Library Board</option>
+      <option value="licensing">Licensing Hearing</option>
+      <option value="organizational">Organizational Committee</option>
+    </select>
+  </div>
+  <div class="buttons-right">
+    <%= link_to 'Items', items_path, class: 'button hollow' %>
+  </div>
+</section>
+
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Committee</th>
       <th>Date</th>
       <th></th>
       <th></th>
@@ -16,7 +35,7 @@
 
   <tbody>
     <% @meetings.each do |meeting| %>
-      <tr>
+      <tr class="<%= meeting.hclass %> data">
         <td><%= link_to meeting.name, meeting %></td>
         <td><%= meeting.date %></td>
         <td><%= link_to (fa_icon('bars') + ' Rows'), items_path(meeting_id: meeting.id) %></td>

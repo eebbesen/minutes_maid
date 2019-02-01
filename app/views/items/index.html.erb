@@ -6,9 +6,12 @@
 <% end %>
 
 <section class="filter-simple">
-  <div class="button-group round">
+  <div class="button-group round buttons-left">
     <button class="button hollow filter-simple-button is-active" data-filter="all">All</button>
     <button class="button hollow filter-simple-button" data-filter="rlh">Resolution LH</button>
+  </div>
+  <div class="buttons-right">
+    <%= link_to 'Meetings', meetings_path, class: 'button hollow' %>
   </div>
 </section>
 

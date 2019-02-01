@@ -13,3 +13,18 @@ two:
   details: https://www.example.com/details.1.30
   agenda: https://www.example.com/agenda.1.30
   minutes: https://www.example.com/minutes.1.30
+
+three:
+  name: Organizational Committee
+  date: <%= Time.new(2019, 01, 30) %>
+  details: https://www.example.com/oc_details.1.30
+  agenda: https://www.example.com/oc_agenda.1.30
+  minutes: https://www.example.com/oc_minutes.1.30
+
+four:
+  name: Board of Water Commissioners
+  date: <%= Time.new(2019, 01, 30) %>
+  details: https://www.example.com/bowc_details.1.30
+  agenda: https://www.example.com/bowc_agenda.1.30
+  minutes: https://www.example.com/bowc_minutes.1.30
+
