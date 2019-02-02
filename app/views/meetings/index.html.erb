@@ -40,7 +40,7 @@
         <td><%= meeting.date %></td>
         <td><%= link_to (fa_icon('bars') + ' Rows'), items_path(meeting_id: meeting.id) %></td>
         <td><%= link_to (fa_icon('bars') + ' Details'), meeting.details %></td>
-        <td><%= link_to (fa_icon('file') + ' Agenda'), meeting.agenda %></td>
+        <td><%= link_to (fa_icon('file') + ' Agenda'), meeting.agenda, { download: meeting.filename} %></td>
         <td><%= link_to (fa_icon('file') + ' Minutes'), meeting.minutes if meeting.minutes %></td>
       </tr>
     <% end %>

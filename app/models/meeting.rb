@@ -13,4 +13,8 @@ class Meeting < ApplicationRecord
       name.split(' ').first.downcase
     end
   end
+
+  def filename
+    "#{name.gsub(' ', '_').downcase}-#{date}.pdf"
+  end
 end
