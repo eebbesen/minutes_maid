@@ -15,6 +15,6 @@ class Meeting < ApplicationRecord
   end
 
   def filename
-    "#{name.gsub(' ', '_').downcase}-#{date}.pdf"
+    "#{name.tr(' ', '_').downcase}-#{date}.pdf"
   end
 end
