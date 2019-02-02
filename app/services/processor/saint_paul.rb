@@ -23,7 +23,7 @@ module Processor
     end
 
     def self.scrape_meetings
-      doc = Scraper.scrape "#{URL}#{MAIN}"
+      Scraper.scrape "#{URL}#{MAIN}"
     end
 
     # requires nokogiri object
