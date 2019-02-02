@@ -26,10 +26,7 @@
     <tr>
       <th>Committee</th>
       <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th colspan="4" class="text-center">Links</th>
     </tr>
   </thead>
 
@@ -38,10 +35,10 @@
       <tr class="<%= meeting.hclass %> data">
         <td><%= link_to meeting.name, meeting %></td>
         <td><%= meeting.date %></td>
-        <td><%= link_to (fa_icon('bars') + ' Rows'), items_path(meeting_id: meeting.id) %></td>
-        <td><%= link_to (fa_icon('bars') + ' Details'), meeting.details %></td>
-        <td><%= link_to (fa_icon('file') + ' Agenda'), meeting.agenda, { download: meeting.filename} %></td>
-        <td><%= link_to (fa_icon('file') + ' Minutes'), meeting.minutes if meeting.minutes %></td>
+        <td class="link"><%= link_to (fa_icon('bars') + ' Items'), items_path(meeting_id: meeting.id) %></td>
+        <td class="link"><%= link_to (fa_icon('external-link-square') + ' Details'), meeting.details, { target: 'blank' } %></td>
+        <td class="link"><%= link_to (fa_icon('file') + ' Agenda'), meeting.agenda, { download: meeting.filename} %></td>
+        <td class="link"><%= link_to (fa_icon('file') + ' Minutes'), meeting.minutes if meeting.minutes %></td>
       </tr>
     <% end %>
   </tbody>

@@ -68,6 +68,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
       r = Processor::SaintPaul.extract_meeting_detail_data(d.first)
 
       assert_equal 'RLH VO 18-61', r[:file_number]
+      assert_equal 'https://stpaul.legistar.com/LegislationDetail.aspx?ID=3836184&GUID=0AAAB19D-37F8-4C62-8865-401A6412DBB8&Options=&Search=', r[:link]
       assert_equal '2', r[:version]
       assert_equal '602 Bush Ave.', r[:name]
       assert_equal 'Resolution LH Vacate Order', r[:item_type]
@@ -137,6 +138,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
     id = {
       file_number: 'RLH RR 01-02',
+      link: 'http://goto.example',
       version: 2,
       name: '20002 Marshall Avenue Remove/Repair',
       item_type: 'Resolution LH Substantial Abatement Order',
@@ -149,6 +151,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     r = Item.last
 
     assert_equal id[:file_number], r.file_number
+    assert_equal id[:link], r.link
     assert_equal id[:version], r.version
     assert_equal id[:name], r.name
     assert_equal id[:item_type], r.item_type
@@ -160,6 +163,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     ic = Item.count
     id = {
       file_number: 'RLH RR 01-02',
+      link: 'http://goto.example',
       version: 2,
       name: '20002 Marshall Avenue Remove/Repair',
       item_type: 'Resolution LH Substantial Abatement Order',
@@ -172,6 +176,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal ic, Item.count
     r = Item.where(file_number: 'RLH RR 01-02').first
     assert_equal id[:file_number], r.file_number
+    assert_equal id[:link], r.link
     assert_equal id[:version], id[:version]
     assert_equal id[:name], r.name
     assert_equal id[:item_type], r.item_type

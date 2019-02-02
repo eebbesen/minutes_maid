@@ -2,6 +2,7 @@
 
 one:
   file_number: RLH RR 01-01
+  link: https://stpaul.legistar.com/LegislationDetail.aspx?ID=3845542&GUID=9D77B68C-1675-4877-AE22-E07A36FA45E9&Options=&Search=
   version: 1
   name: 10001 Marshall Avenue Remove/Repair
   item_type: Resolution LH Substantial Abatement Order
@@ -12,6 +13,7 @@ one:
 
 two:
   file_number: RLH RR 01-02
+  link: https://stpaul.legistar.com/LegislationDetail.aspx?ID=3850260&GUID=E38EF11A-5288-4C0F-9884-C6476C51A87D&Options=&Search=
   version: 1
   name: 20002 Marshall Avenue Remove/Repair
   item_type: Resolution LH Substantial Abatement Order
@@ -32,6 +34,7 @@ three:
 
 four:
   file_number: Ord 01-1
+  link: https://stpaul.legistar.com/LegislationDetail.aspx?ID=3822522&GUID=9131C16A-71AB-47A4-875B-7130047778B7&Options=&Search=
   version: 1
   name:
   item_type: Ordinance
