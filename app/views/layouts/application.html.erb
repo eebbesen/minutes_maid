@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title>Minutes Maid</title>
+    <%= favicon_link_tag asset_path('stp_flag-fav.png') %>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -12,6 +13,7 @@
   </head>
 
   <body>
+    <h1><%= image_tag("/assets/stp_flag-60.png", class: "img-responsive") %>&nbsp;&nbsp;<%= content_for?(:header) ? yield(:header) : '' %></h1>
 
     <%= yield %>
 
