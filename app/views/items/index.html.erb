@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
-<% if params['meeting_id']
-  if @items.count.positive? %>
-    <h1><%= "#{@items.first.meeting.name} on #{@items.first.meeting.date} Items" %></h1>
-  <% else
-    m = Meeting.find params['meeting_id'] %>
-    <h1><%= "#{m.name} on #{m.date} Items" %></h1>
-  <% end %>
-<% else %>
-  <h1>Items</h1>
-<% end %>
-
+<% h = if params['meeting_id']
+      if @items.count.positive?
+        "#{@items.first.meeting.name} on #{@items.first.meeting.date} Items"
+      else
+        m = Meeting.find params['meeting_id']
+        "#{m.name} on #{m.date} Items"
+      end
+    else
+      "Items"
+    end
+  header h
+%>
 <section class="filter-simple">
   <div class="button-group round buttons-left">
     <select id="item-filter" class="dropdown menu button hollow" data-dropdown-menu>
