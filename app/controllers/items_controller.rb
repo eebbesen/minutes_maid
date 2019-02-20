@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @items = if params[:meeting_id]
                Item.where(meeting_id: params[:meeting_id])
              else
-               Item.all.order(meeting_id: :desc)
+               Item.all.sort_by { |i| i.meeting.date }.reverse
              end.reject { |i| i.file_number.nil? }
   end
 
