@@ -14,6 +14,7 @@ bundle exec rake scrape_saint_paul
 ```bash
 heroku run rake scrape_saint_paul
 ```
+I've got this scheduled on Heroku: https://devcenter.heroku.com/articles/scheduler#installing-the-add-on.
 
 ## Development
 ### Unit tests
