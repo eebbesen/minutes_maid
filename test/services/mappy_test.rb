@@ -10,4 +10,12 @@ class MappyTest < ActiveSupport::TestCase
       assert_equal 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJZW__ehcq9ocRYN-4nWCtgX4', l
     end
   end
+
+  test 'returns empty string when no result' do
+    VCR.use_cassette('google_maps_nw') do
+      l = Mappy.link('')
+
+      assert_equal '', l
+    end
+  end
 end
