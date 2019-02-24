@@ -17,5 +17,11 @@ module MinutesMaid
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # init Google
+    Google::Maps.configure do |config|
+      config.authentication_mode = Google::Maps::Configuration::API_KEY
+      config.api_key = ENV['MM_GOOGLE_API_KEY']
+    end
   end
 end
