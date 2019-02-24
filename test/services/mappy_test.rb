@@ -12,10 +12,8 @@ class MappyTest < ActiveSupport::TestCase
   end
 
   test 'returns empty string when no result' do
-    VCR.use_cassette('google_maps_nw') do
-      l = Mappy.link('')
+    l = Mappy.link('')
 
-      assert_equal '', l
-    end
+    assert_equal '', l
   end
 end
