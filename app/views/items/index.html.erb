@@ -50,16 +50,12 @@
     <% @items.each do |item| %>
       <tr class="<%= item.hclass %> data">
         <td class="item-name"><%= link_to (fa_icon('external-link-square') + ' ' + item.file_number), item.link, { target: 'blank' } %></td>
-        <% if item.item_type.starts_with?('Resolution LH') && !item.file_number.starts_with?('RLH AR')%>
-          <% link = Mappy.link(item.name)
+          <% link = ItemHelper.loc_link(item)
             if link.size.positive? %>
-            <td><%= link_to (fa_icon('external-link-square') + ' ' + item.name), link %></td>
+            <td><%= link_to (fa_icon('external-link-square') + ' ' + item.name), link, { target: 'blank' } %></td>
           <% else %>
             <td><%= item.name %></td>
           <% end %>
-        <% else %>
-          <td><%= item.name %></td>
-        <% end %>
         <td><%= item.item_type %></td>
         <td><%= item.title %></td>
         <td><%= item.version %></td>

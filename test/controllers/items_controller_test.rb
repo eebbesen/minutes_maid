@@ -8,7 +8,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    VCR.use_cassette('google_maps_marshall') do
+    VCR.use_cassette('google_maps_marshall_two') do
       get items_url
 
       assert_response :success
