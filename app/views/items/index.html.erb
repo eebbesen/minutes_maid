@@ -50,7 +50,7 @@
     <% @items.each do |item| %>
       <tr class="<%= item.hclass %> data">
         <td class="item-name"><%= link_to (fa_icon('external-link-square') + ' ' + item.file_number), item.link, { target: 'blank' } %></td>
-          <% link = ItemHelper.loc_link(item)
+          <% link = ItemsHelper.loc_link(item)
             if link.size.positive? %>
             <td><%= link_to (fa_icon('external-link-square') + ' ' + item.name), link, { target: 'blank' } %></td>
           <% else %>

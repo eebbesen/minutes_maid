@@ -2,11 +2,11 @@
 
 require 'test_helper'
 
-class ItemHelperTest < ActiveSupport::TestCase
+class ItemsHelperTest < ActiveSupport::TestCase
   test 'links address with remove repair' do
     VCR.use_cassette('item_one') do
       item = items :one
-      s = ItemHelper.loc_link item
+      s = ItemsHelper.loc_link item
 
       assert_equal 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id=EioxMDAwMSBNYXJzaGFsbCBBdmVudWUsIFNhaW50IFBhdWwsIE1OLCBVU0E', s
     end
@@ -14,7 +14,7 @@ class ItemHelperTest < ActiveSupport::TestCase
 
   test 'links address with nothing' do
     item = items :four
-    s = ItemHelper.loc_link item
+    s = ItemsHelper.loc_link item
 
     assert_equal '', s
   end
@@ -28,7 +28,7 @@ class ItemHelperTest < ActiveSupport::TestCase
       }
 
       item = Item.new h
-      s = ItemHelper.loc_link item
+      s = ItemsHelper.loc_link item
 
       assert_equal '', s
     end
@@ -42,7 +42,7 @@ class ItemHelperTest < ActiveSupport::TestCase
     }
 
     item = Item.new h
-    s = ItemHelper.loc_link item
+    s = ItemsHelper.loc_link item
 
     assert_equal '', s
   end
@@ -56,7 +56,7 @@ class ItemHelperTest < ActiveSupport::TestCase
       }
 
       item = Item.new h
-      s = ItemHelper.loc_link item
+      s = ItemsHelper.loc_link item
 
       assert_equal 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJZW__ehcq9ocRYN-4nWCtgX4', s
     end
@@ -64,7 +64,7 @@ class ItemHelperTest < ActiveSupport::TestCase
 
   test 'clean remove/repair' do
     item = items :one
-    n = ItemHelper.clean_name item.name
+    n = ItemsHelper.clean_name item.name
 
     assert_equal '10001 Marshall Avenue', n
   end
