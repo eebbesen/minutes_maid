@@ -211,7 +211,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
         version: 2,
         name: '1600 Grand Ave',
         item_type: 'Resolution LH Substantial Abatement Order',
-        title: 'Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)',
+        title: 'Ordering the rehabilitation or razing and removal of the structures...',
         meeting_id: meetings(:two).id
       }
 

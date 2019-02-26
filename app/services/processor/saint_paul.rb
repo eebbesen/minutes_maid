@@ -28,6 +28,7 @@ module Processor
 
     def self.add_geo_link(item)
       return item.geo_link if item.geo_link
+
       item.geo_link = ItemsHelper.loc_link item
       item.save!
       item.geo_link
