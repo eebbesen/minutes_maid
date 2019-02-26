@@ -22,6 +22,20 @@ module Processor
       end
     end
 
+    def self.add_geo_links
+      Item.where(geo_link: nil) do |i|
+        i.geo_link = ItemsHelper.loc_link i
+        i.save
+      end
+    end
+
+    def self.add_geo_link(item)
+      return item.geo_link if item.geo_link
+      item.geo_link = ItemsHelper.loc_link item
+      item.save!
+      item.geo_link
+    end
+
     def self.scrape_meetings
       Scraper.scrape "#{URL}#{MAIN}"
     end

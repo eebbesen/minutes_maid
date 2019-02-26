@@ -183,4 +183,43 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal id[:title], r.title
     assert_equal id[:meeting_id], r.meeting.id
   end
+
+  test 'add_geo_link with existing link' do
+    h = {
+      file_number: 'RLH RR 01-02',
+      link: 'http://goto.example',
+      version: 2,
+      name: '20002 Marshall Avenue Remove/Repair',
+      item_type: 'Resolution LH Substantial Abatement Order',
+      title: 'Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)',
+      meeting_id: meetings(:two).id,
+      geo_link: 'https://blah'
+    }
+
+    i = Item.new h
+
+    l = Processor::SaintPaul.send(:add_geo_link, i)
+
+    assert_equal h[:geo_link], l
+  end
+
+  test 'add_geo_link without existing link' do
+    VCR.use_cassette('mac') do
+      h = {
+        file_number: 'RLH RR 01-02',
+        link: 'http://goto.example',
+        version: 2,
+        name: '1600 Grand Ave',
+        item_type: 'Resolution LH Substantial Abatement Order',
+        title: 'Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)',
+        meeting_id: meetings(:two).id
+      }
+
+      i = Item.new h
+
+      l = Processor::SaintPaul.send(:add_geo_link, i)
+
+      assert_equal 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJZW__ehcq9ocRYN-4nWCtgX4', l
+    end
+  end
 end

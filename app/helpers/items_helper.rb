@@ -4,9 +4,7 @@
 module ItemsHelper
   class << self
     def loc_link(item)
-      l = ''
-      l = Mappy.link(clean_name(item.name)) if item.item_type.starts_with?('Resolution LH') && !item.file_number.starts_with?('RLH AR')
-      l
+      (item.item_type.starts_with?('Resolution LH') && !item.file_number.starts_with?('RLH AR')) ? Mappy.link(clean_name(item.name)) : ''
     end
 
     def clean_name(name)
