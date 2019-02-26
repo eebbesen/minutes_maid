@@ -23,10 +23,7 @@ module Processor
     end
 
     def self.add_geo_links
-      Item.where(geo_link: nil) do |i|
-        i.geo_link = ItemsHelper.loc_link i
-        i.save
-      end
+      Item.where(geo_link: nil).each { |i| add_geo_link i }
     end
 
     def self.add_geo_link(item)
