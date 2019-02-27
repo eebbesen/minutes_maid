@@ -15,7 +15,7 @@ class ItemsTest < ApplicationSystemTestCase
   end
 
   test 'filter resolution lh' do
-    VCR.use_cassette('system_test_2') do
+    VCR.use_cassette('system_test_1') do
       visit items_url
       assert_equal 4, page.all(:css, 'tr.data').size
       find(:css, '#item-filter').find(:option, 'Resolution LH').select_option
