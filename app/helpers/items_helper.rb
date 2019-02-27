@@ -10,5 +10,9 @@ module ItemsHelper
     def clean_name(name)
       name.gsub('Remove/Repair', '').strip
     end
+
+    def utf8_convert(text)
+      text.gsub(/â\u0080\u0099/, "'")
+    end
   end
 end
