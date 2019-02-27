@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = if params[:meeting_id]
-               Item.where(meeting_id: params[:meeting_id])
+               Item.where(meeting_id: params[:meeting_id]).order(:item_type)
              else
                Item.all.sort_by { |i| i.meeting.date }.reverse
              end.reject { |i| i.file_number.nil? }
