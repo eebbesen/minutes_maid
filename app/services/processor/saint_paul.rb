@@ -8,6 +8,7 @@ module Processor
     # requires nokogiri document
     def initialize
       @doc = Processor::SaintPaul.scrape_meetings
+      @doc.encoding = 'utf-8'
     end
 
     def process

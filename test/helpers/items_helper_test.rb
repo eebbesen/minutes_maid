@@ -68,4 +68,12 @@ class ItemsHelperTest < ActiveSupport::TestCase
 
     assert_equal '10001 Marshall Avenue', n
   end
+
+  test 'utf8_convert single quote in title' do
+    expected = "Approving the application of Burger Moe's for a sound level variance to present amplified music for St. Patrick's Day events on Saturday, March 16, 2019 at 242 7th Street West"
+    title = "Approving the application of Burger Moeâ\u0080\u0099s for a sound level variance to present amplified music for St. Patrickâ\u0080\u0099s Day events on Saturday, March 16, 2019 at 242 7th Street West"
+
+    r = ItemsHelper.utf8_convert title
+    assert_equal expected, r
+  end
 end
