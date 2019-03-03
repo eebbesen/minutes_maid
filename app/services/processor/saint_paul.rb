@@ -16,6 +16,8 @@ module Processor
         md = Processor::SaintPaul.extract_meeting_data(m)
         meeting = Processor::SaintPaul.send(:persist_meeting, md)
         r = Processor::SaintPaul.get_meeting_detail_rows meeting[:details]
+        next unless r
+
         r.each do |d|
           i = Processor::SaintPaul.extract_meeting_detail_data(d).merge(meeting_id: meeting.id)
           Processor::SaintPaul.send(:persist_item, i)
@@ -80,6 +82,8 @@ module Processor
     # meeting details
     # optional iteM_type is regex, so can be partial
     def self.get_meeting_detail_rows(url, item_type = nil)
+      return [] unless url
+
       row_data = Scraper.scrape(url)
       # page has two tabs (Meeting Items and Public Comments)
       # just get first
@@ -116,7 +120,7 @@ module Processor
     end
 
     private_class_method def self.urlify(row)
-      return nil if row.nil?
+      return nil unless row && row.attributes['href']
 
       "#{URL}#{row.attributes['href'].text}"
     end
