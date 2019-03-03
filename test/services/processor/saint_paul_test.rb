@@ -23,6 +23,10 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     end
   end
 
+  test 'gets meeting detail rows url is nil' do
+    Processor::SaintPaul.get_meeting_detail_rows nil
+  end
+
   test 'filters meeting detail rows' do
     m = @p.get_meeting_rows('City Council').first
     url = Processor::SaintPaul.extract_meeting_data(m)[:details]
@@ -221,5 +225,21 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
       assert_equal 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJZW__ehcq9ocRYN-4nWCtgX4', l
     end
+  end
+
+  test 'urlify with nil href' do
+    Row = Struct.new(:attributes)
+    r = Row.new(k: 'val')
+
+    assert_nil Processor::SaintPaul.send(:urlify, r)
+  end
+
+  test 'urlify with href' do
+    TestRow = Struct.new(:attributes)
+    Href = Struct.new(:text)
+    h = Href.new('endpoint123')
+    r = TestRow.new('href' => h)
+
+    assert_equal 'https://stpaul.legistar.com/endpoint123', Processor::SaintPaul.send(:urlify, r)
   end
 end
