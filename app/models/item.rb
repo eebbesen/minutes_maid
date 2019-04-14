@@ -2,6 +2,7 @@
 
 class Item < ApplicationRecord
   belongs_to :meeting
+  has_many :notes
 
   def hclass
     case item_type

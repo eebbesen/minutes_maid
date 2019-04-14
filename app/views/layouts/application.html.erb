@@ -13,6 +13,15 @@
   </head>
 
   <body>
+    <div class="top-bar">
+      <div class="top-bar-right">
+        <% if user_signed_in? %>
+          <%= current_user %>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %>
+        <% end %>
+      </div>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <h1><%= image_tag("/assets/stp_flag-60.png", class: "img-responsive") %>&nbsp;&nbsp;<%= content_for?(:header) ? yield(:header) : '' %></h1>
