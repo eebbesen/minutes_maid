@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'autoprefixer-rails'
+gem 'devise'
 gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'google-maps'
