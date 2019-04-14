@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <% h = if params['meeting_id']
       if @items.count.positive?
         "#{@items.first.meeting.name} on #{@items.first.meeting.date} Items"
