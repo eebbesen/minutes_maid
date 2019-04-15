@@ -172,7 +172,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
       name: '20002 Marshall Avenue Remove/Repair',
       item_type: 'Resolution LH Substantial Abatement Order',
       title: 'Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)',
-      meeting_id: meetings(:two).id
+      meeting_id: meetings(:meeting_two).id
     }
 
     Processor::SaintPaul.send(:persist_item, id)
@@ -196,7 +196,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
       name: '20002 Marshall Avenue Remove/Repair',
       item_type: 'Resolution LH Substantial Abatement Order',
       title: 'Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)',
-      meeting_id: meetings(:two).id,
+      meeting_id: meetings(:meeting_two).id,
       geo_link: 'https://blah'
     }
 
@@ -216,7 +216,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
         name: '1600 Grand Ave',
         item_type: 'Resolution LH Substantial Abatement Order',
         title: 'Ordering the rehabilitation or razing and removal of the structures...',
-        meeting_id: meetings(:two).id
+        meeting_id: meetings(:meeting_two).id
       }
 
       i = Item.new h

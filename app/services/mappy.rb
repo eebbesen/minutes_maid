@@ -14,7 +14,7 @@ module Mappy
       begin
         places = Google::Maps.places(place + POST)
       rescue Google::Maps::ZeroResultsException => zre
-        puts "Exception in Mappy#link:\n#{zre.message}"
+        puts "Exception in Mappy#link for #{place}: #{zre.message}"
         return ''
       end
       return '' unless places.size.positive?

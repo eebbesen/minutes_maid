@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_226_000_339) do
+ActiveRecord::Schema.define(version: 20_190_414_195_316) do
   create_table 'items', force: :cascade do |t|
     t.string 'file_number'
     t.integer 'version'
@@ -37,5 +37,27 @@ ActiveRecord::Schema.define(version: 20_190_226_000_339) do
     t.string 'minutes'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+  end
+
+  create_table 'notes', force: :cascade do |t|
+    t.string 'text'
+    t.integer 'item_id'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['item_id'], name: 'index_notes_on_item_id'
+    t.index ['user_id'], name: 'index_notes_on_user_id'
+  end
+
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 end

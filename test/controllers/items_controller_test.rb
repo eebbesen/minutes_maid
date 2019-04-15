@@ -4,7 +4,7 @@ require 'test_helper'
 
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @item = items(:one)
+    @item = items(:item_one)
   end
 
   test 'should get index' do
@@ -13,21 +13,21 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
 
       assert_response :success
       assert response.body.include? @item.file_number
-      assert response.body.include? items(:two).file_number
-      assert response.body.include? items(:three).file_number
+      assert response.body.include? items(:item_two).file_number
+      assert response.body.include? items(:item_three).file_number
     end
   end
 
   test 'should get filtered index' do
-    m = meetings(:two)
+    m = meetings(:meeting_two)
 
     VCR.use_cassette('google_maps_marshall') do
       get(items_url, params: { meeting_id: m.id })
 
       assert_response :success
       refute response.body.include? @item.file_number
-      assert response.body.include? items(:two).file_number
-      assert response.body.include? items(:three).file_number
+      assert response.body.include? items(:item_two).file_number
+      assert response.body.include? items(:item_three).file_number
     end
   end
 
