@@ -22,7 +22,7 @@
         <td><%= note.item.name %></td>
         <td><%= note.created_at %></td>
         <td><%= note.updated_at %></td>
-        <td><%= link_to 'Delete', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Delete', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button tiny alert' %></td>
       </tr>
     <% end %>
   </tbody>
