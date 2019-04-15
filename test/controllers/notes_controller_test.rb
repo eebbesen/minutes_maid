@@ -4,9 +4,9 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:one)
-    @item = items(:one)
-    @note = notes(:one)
+    sign_in users(:user_one)
+    @item = items(:item_one)
+    @note = notes(:note_one)
   end
 
   test "should get index" do

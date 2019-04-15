@@ -1,4 +1,8 @@
-<h1>New Note for <%= @item.name %></h1>
+<% if @item %>
+  <h1>New Note for <%= @item.name %></h1>
+<% else %>
+  <h1>New Note</h1>
+<% end %>
 
 <%= render 'form', note: @note %>
 

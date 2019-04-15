@@ -4,7 +4,7 @@ require 'test_helper'
 
 class MeetingsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @meeting = meetings(:one)
+    @meeting = meetings(:meeting_one)
   end
 
   test 'should get index' do

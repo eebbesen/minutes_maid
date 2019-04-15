@@ -5,12 +5,17 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    unless params['item_id']
+      @notes = Note.all.where(user_id: current_user.id)
+    else
+      @item = Item.find(params['item_id'])
+      @notes = Note.where(user_id: current_user.id, item_id: @item.id)
+    end
   end
 
   # GET /notes/1
   # GET /notes/1.json
-  def show
+  def shows
   end
 
   # GET /notes/new

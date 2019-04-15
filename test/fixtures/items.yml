@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+item_one:
   file_number: RLH RR 01-01
   link: https://stpaul.legistar.com/LegislationDetail.aspx?ID=3845542&GUID=9D77B68C-1675-4877-AE22-E07A36FA45E9&Options=&Search=
   version: 1
@@ -9,9 +9,9 @@ one:
   title: Ordering the rehabilitation or razing and removal of the structures at 10001 MARSHALL AVENUE within fifteen (15) days after the January 2, 2019, City Council Public Hearing. (Public hearing continued from January 2)
   action:
   result:
-  meeting: one
+  meeting: meeting_one
 
-two:
+item_two:
   file_number: RLH RR 01-02
   link: https://stpaul.legistar.com/LegislationDetail.aspx?ID=3850260&GUID=E38EF11A-5288-4C0F-9884-C6476C51A87D&Options=&Search=
   version: 1
@@ -20,9 +20,9 @@ two:
   title: Ordering the rehabilitation or razing and removal of the structures at 20002 MARSHALL AVENUE within fifteen (15) days after the February 2, 2019, City Council Public Hearing. (Public hearing continued from February 2)
   action:
   result:
-  meeting: two
+  meeting: meeting_two
 
-three:
+item_three:
   file_number: RLH RR 01-03
   version: 1
   name: 30003 Marshall Avenue Remove/Repair
@@ -30,9 +30,9 @@ three:
   title: Ordering the rehabilitation or razing and removal of the structures at 30003 MARSHALL AVENUE within fifteen (15) days after the February 2, 2019, City Council Public Hearing. (Public hearing continued from February 2)
   action:
   result:
-  meeting: two
+  meeting: meeting_two
 
-four:
+item_four:
   file_number: Ord 01-1
   link: https://stpaul.legistar.com/LegislationDetail.aspx?ID=3822522&GUID=9131C16A-71AB-47A4-875B-7130047778B7&Options=&Search=
   version: 1
@@ -41,4 +41,4 @@ four:
   title: Granting the application of First Last and Second Last to rezone the property at 40004 Marshall Avenue from RM2 Multi-Family Residential to BC Community Business (Converted), and amending Chapter 60 of the Legislative Code pertaining to the zoning map.
   action:
   result:
-  meeting: two
+  meeting: meeting_two

@@ -1,27 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+meeting_one:
   name: City Council
   date: <%= Time.new(2019, 01, 23) %>
   details: https://www.example.com/details.1.23
   agenda: https://www.example.com/agenda.1.23
   minutes: https://www.example.com/minutes.1.23
 
-two:
+meeting_two:
   name: City Council
   date: <%= Time.new(2019, 01, 30) %>
   details: https://www.example.com/details.1.30
   agenda: https://www.example.com/agenda.1.30
   minutes: https://www.example.com/minutes.1.30
 
-three:
+meeting_three:
   name: Organizational Committee
   date: <%= Time.new(2019, 01, 30) %>
   details: https://www.example.com/oc_details.1.30
   agenda: https://www.example.com/oc_agenda.1.30
   minutes: https://www.example.com/oc_minutes.1.30
 
-four:
+meeting_four:
   name: Board of Water Commissioners
   date: <%= Time.new(2019, 01, 30) %>
   details: https://www.example.com/bowc_details.1.30

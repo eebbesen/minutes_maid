@@ -1,20 +1,28 @@
-<h1>Notes</h1>
+<% if @item %>
+  <h1><%= @item.title %></h1>
+<% else %>
+  <h1>My Notes</h1>
+<% end %>
 
 <table>
   <thead>
     <tr>
       <th>Text</th>
-      <th colspan="3"></th>
+      <th>Item</th>
+      <th>Date Created</th>
+      <th>Date Last Updated</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @notes.each do |note| %>
-      <tr>
+      <tr class="pointer" onclick="location.href='<%= edit_note_path(note) %>'">
         <td><%= note.text %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= note.item.name %></td>
+        <td><%= note.created_at %></td>
+        <td><%= note.updated_at %></td>
+        <td><%= link_to 'Delete', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Note', new_note_path %>
+<%= link_to 'New Note', new_note_path(item_id: (@item ? @item.id : @notes.first.item_id)) %>

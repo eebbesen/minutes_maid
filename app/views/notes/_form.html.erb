@@ -16,6 +16,11 @@
     <%= form.text_field :text %>
   </div>
 
+  <div class="field hidden">
+    <%= form.label :item_id %>
+    <%= form.text_field :item_id, value: (@item ? @item.id : note.item_id) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -40,7 +40,10 @@
       <th>Action</th>
       <th>Result</th>
       <% unless params['meeting_id'] %>
-      <th>Meeting</th>
+        <th>Meeting</th>
+      <% end %>
+      <% if current_user %>
+        <th>Notes</th>
       <% end %>
     </tr>
   </thead>
@@ -61,7 +64,10 @@
         <td><%= item.action %></td>
         <td><%= item.result %></td>
         <% unless params['meeting_id'] %>
-        <td><%= link_to "#{item.meeting.name} on #{item.meeting.date}", item.meeting %></td>
+          <td><%= link_to "#{item.meeting.name} on #{item.meeting.date}", item.meeting %></td>
+        <% end %>
+        <% if current_user %>
+          <td><%= link_to "#{item.notes.count}", notes_path(item_id: item.id) %></td>
         <% end %>
       </tr>
     <% end %>

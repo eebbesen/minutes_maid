@@ -2,6 +2,18 @@
   <strong>Text:</strong>
   <%= @note.text %>
 </p>
+<p>
+  <strong>Item:</strong>
+  <%= @note.item.name %>
+</p>
+<p>
+  <strong>Date Created:</strong>
+  <%= @note.created_at %>
+</p>
+<p>
+  <strong>Date Last Updated:</strong>
+  <%= @note.updated_at %>
+</p>
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>
