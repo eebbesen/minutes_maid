@@ -1,22 +1,23 @@
+# frozen_string_literal: true
+
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   # GET /notes
   # GET /notes.json
   def index
-    unless params['item_id']
-      @notes = Note.all.where(user_id: current_user.id)
-    else
+    if params['item_id']
       @item = Item.find(params['item_id'])
       @notes = Note.where(user_id: current_user.id, item_id: @item.id)
+    else
+      @notes = Note.all.where(user_id: current_user.id)
     end
   end
 
   # GET /notes/1
   # GET /notes/1.json
-  def shows
-  end
+  def shows; end
 
   # GET /notes/new
   def new
@@ -25,13 +26,12 @@ class NotesController < ApplicationController
   end
 
   # GET /notes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(note_params.merge({ "user_id": current_user.id }))
+    @note = Note.new(note_params.merge("user_id": current_user.id))
 
     respond_to do |format|
       if @note.save
@@ -48,7 +48,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1.json
   def update
     respond_to do |format|
-      if @note.update(note_params.merge({ "user_id": current_user.id }))
+      if @note.update(note_params.merge("user_id": current_user.id))
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
         format.json { render :show, status: :ok, location: @note }
       else
@@ -69,13 +69,14 @@ class NotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = Note.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def note_params
-      params.require(:note).permit(:text, :item_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_note
+    @note = Note.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def note_params
+    params.require(:note).permit(:text, :item_id)
+  end
 end
