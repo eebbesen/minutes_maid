@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class ItemsTest < ApplicationSystemTestCase
   setup do
-    @item = items(:one)
+    @item = items(:item_one)
   end
 
   test 'visiting the items index for all items' do

@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class MeetingsTest < ApplicationSystemTestCase
   setup do
-    @meeting = meetings(:one)
+    @meeting = meetings(:meeting_one)
   end
 
   test 'visiting the index' do

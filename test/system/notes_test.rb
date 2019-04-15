@@ -2,7 +2,8 @@ require "application_system_test_case"
 
 class NotesTest < ApplicationSystemTestCase
   setup do
-    @note = notes(:one)
+    sign_in users(:user_one)
+    @note = notes(:note_one)
   end
 
   test "visiting the index" do
@@ -23,7 +24,7 @@ class NotesTest < ApplicationSystemTestCase
 
   test "updating a Note" do
     visit notes_url
-    click_on "Edit", match: :first
+    page.find(:css, ".pointer", match: :first).click
 
     fill_in "Text", with: @note.text
     click_on "Update Note"
@@ -35,7 +36,7 @@ class NotesTest < ApplicationSystemTestCase
   test "destroying a Note" do
     visit notes_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "Delete", match: :first
     end
 
     assert_text "Note was successfully destroyed"
