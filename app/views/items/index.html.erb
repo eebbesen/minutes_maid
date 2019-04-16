@@ -64,7 +64,7 @@
           <td><%= link_to "#{item.meeting.name} on #{item.meeting.date}", item.meeting %></td>
         <% end %>
         <% if current_user %>
-          <td><%= link_to "#{item.notes.count}", notes_path(item_id: item.id) %></td>
+          <td><%= link_to "#{item.user_notes(current_user.id).count}", notes_path(item_id: item.id) %></td>
         <% end %>
       </tr>
     <% end %>

@@ -16,4 +16,8 @@ class Item < ApplicationRecord
       item_type.split(' ').first.downcase
     end
   end
+
+  def user_notes(user_id)
+    notes.where(user_id: user_id)
+  end
 end
