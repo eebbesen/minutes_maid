@@ -1,7 +1,7 @@
 <% header 'Meetings' %>
 
 <section class="filter-simple">
-  <div class="buttons-left">
+  <div class="button-group buttons-left">
     <select id="meeting-filter" class="dropdown menu button hollow" data-dropdown-menu>
       <option value="all">All &raquo;</option>
       <option value="water">Board Of Water Commissioners</option>
@@ -13,9 +13,6 @@
       <option value="licensing">Licensing Hearing</option>
       <option value="organizational">Organizational Committee</option>
     </select>
-  </div>
-  <div class="buttons-right">
-    <%= link_to 'Items', items_path, class: 'button hollow' %>
   </div>
 </section>
 
