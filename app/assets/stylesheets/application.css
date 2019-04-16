@@ -15,3 +15,12 @@
  *= require_foundation_and_overrides
  *= require font-awesome
  */
+
+
+#meetings-button {
+  margin: 0 1em 0 0;
+}
+
+#items-button {
+  margin: 0;
+}

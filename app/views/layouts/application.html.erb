@@ -14,6 +14,10 @@
 
   <body>
     <div class="top-bar">
+      <div class="top-bar-left">
+        <%= link_to('Meetings', meetings_path, class: 'button hollow', id: 'meetings-button') unless request.path.match(/meeting/) %>
+        <%= link_to 'Items', items_path, class: 'button hollow', id: 'items-button' unless request.path.match(/item/) %>
+      </div>
       <div class="top-bar-right">
         <% if user_signed_in? %>
           <b><%= current_user.email %></b> | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
