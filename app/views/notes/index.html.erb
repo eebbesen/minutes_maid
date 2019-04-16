@@ -1,8 +1,4 @@
-<% if @item %>
-  <h1><%= @item.title %></h1>
-<% else %>
-  <h1>My Notes</h1>
-<% end %>
+<% header (@item ? @item.title : 'My Notes') %>
 
 <table>
   <thead>
@@ -22,7 +18,7 @@
         <td><%= note.item.name %></td>
         <td><%= note.created_at %></td>
         <td><%= note.updated_at %></td>
-        <td><%= button_to 'Delete', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button tiny alert' %></td>
+        <td><%= button_to 'Delete', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button tiny alert delete-button' %></td>
       </tr>
     <% end %>
   </tbody>
