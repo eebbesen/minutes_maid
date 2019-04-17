@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    branches:
+      ignore:
+        - xx
+    working_directory: ~/project
+    docker:
+      - image: circleci/ruby:2.5.3-browsers
+    steps:
+      - checkout
+      - run:
+          name: bundle install
+          command: gem install bundler; bundle install
+      - run:
+          name: run_test
+          command: bin/rails test
+      - run:
+          name: run_system_tests
+          command: bin/rails test:system
+      - store_artifacts:
+          path: coverage
