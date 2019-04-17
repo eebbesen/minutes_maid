@@ -6,7 +6,7 @@ jobs:
         - xx
     working_directory: ~/project
     docker:
-      - image: circleci/ruby:2.5.3
+      - image: circleci/ruby:2.5.3-browsers
     steps:
       - checkout
       - run:
