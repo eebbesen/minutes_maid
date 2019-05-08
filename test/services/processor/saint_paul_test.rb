@@ -12,7 +12,7 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
   test 'process' do
     VCR.use_cassette('stp_legistar_details_6EDC9EFD') do
       assert_difference('Meeting.count', 10) do
-        assert_difference('Item.count', 345) do
+        assert_difference('Item.count', 346) do
           @p.process
         end
       end

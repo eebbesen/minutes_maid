@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Wed, 08 May 2019 01:58:36 GMT
+      - Mon, 25 Feb 2019 12:57:57 GMT
   response:
     status:
       code: 200
@@ -21,21 +21,21 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 08 May 2019 01:58:36 GMT
+      - Mon, 25 Feb 2019 12:57:57 GMT
       Expires:
-      - Wed, 08 May 2019 01:58:36 GMT
+      - Mon, 25 Feb 2019 12:57:57 GMT
       Cache-Control:
       - private, max-age=300
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
-      - '0'
+      - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=45
+      - gfet4t7; dur=41
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="46,44,43,39"
+      - quic=":443"; ma=2592000; v="44,43,39"
       Accept-Ranges:
       - none
       Vary:
@@ -49,7 +49,7 @@ http_interactions:
            "predictions" : [
               {
                  "description" : "10001 Marshall Avenue, Saint Paul, MN, USA",
-                 "id" : "d32bc43b9100686aaf4c48c3811bb2d112a12993",
+                 "id" : "9af0f304f75c12cf4568b2392fb4765179508fce",
                  "matched_substrings" : [
                     {
                        "length" : 15,
@@ -177,5 +177,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Wed, 08 May 2019 01:58:36 GMT
+  recorded_at: Mon, 25 Feb 2019 12:57:57 GMT
 recorded_with: VCR 4.0.0
