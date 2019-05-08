@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/place/autocomplete/json?input=not%20an%20address%20Saint%20Paul,%20MN&key=AIzaSyCTQ7QGkpvV8mw_6HDfxw-4_Sd7vNsJ6G0&language=en
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.5.3 (2018-10-18))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 08 May 2019 01:58:36 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 08 May 2019 01:58:36 GMT
+      Expires:
+      - Wed, 08 May 2019 01:58:36 GMT
+      Cache-Control:
+      - private, max-age=300
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=44
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,44,43,39"
+      Accept-Ranges:
+      - none
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+           "predictions" : [],
+           "status" : "ZERO_RESULTS"
+        }
+    http_version: 
+  recorded_at: Wed, 08 May 2019 01:58:36 GMT
+recorded_with: VCR 4.0.0
