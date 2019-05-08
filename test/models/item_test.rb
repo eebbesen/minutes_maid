@@ -8,6 +8,12 @@ class ItemTest < ActiveSupport::TestCase
     assert_equal 'rlh', i.hclass
   end
 
+  test 'computes rlp hclass' do
+    i = items(:item_one)
+    i.item_type = 'Resolution-Public Hearing'
+    assert_equal 'rlp', i.hclass
+  end
+
   test 'computes res hclass' do
     i = items(:item_one)
     i.item_type = 'Resolution'
@@ -26,6 +32,6 @@ class ItemTest < ActiveSupport::TestCase
     u2 = users(:user_two)
 
     assert_equal 2, i.user_notes(u1.id).count
-    assert_equal 0, i.user_notes(u2.id).count
+    assert_equal 1, i.user_notes(u2.id).count
   end
 end

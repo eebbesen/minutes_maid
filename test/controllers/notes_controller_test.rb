@@ -13,7 +13,18 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get index' do
     get notes_url
+
     assert_response :success
+    assert response.body.include? @note.text
+  end
+
+  test 'should get index for one item' do
+    note_three = notes(:note_three)
+    get notes_url, params: { item_id: @item.id }
+
+    assert_response :success
+    assert response.body.include? @note.text
+    assert !response.body.include?(note_three.text)
   end
 
   test 'should get new' do
@@ -29,6 +40,14 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to note_url(Note.last)
   end
 
+  test 'should error when failing to create note' do
+    assert_difference('Note.count', 0) do
+      post notes_url, params: { note: { text: nil, item_id: nil } }
+    end
+
+    assert response.body.include? '1 error prohibited this note from being saved'
+  end
+
   test 'should show note' do
     get note_url(@note)
     assert_response :success
@@ -42,6 +61,11 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
   test 'should update note' do
     patch note_url(@note), params: { note: { text: @note.text, item_id: @item.id } }
     assert_redirected_to note_url(@note)
+  end
+
+  test 'should error when failing to update note' do
+    patch note_url(@note), params: { note: { text: nil, item_id: nil } }
+    assert response.body.include? '1 error prohibited this note from being saved'
   end
 
   test 'should destroy note' do

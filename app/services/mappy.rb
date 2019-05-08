@@ -2,7 +2,7 @@
 
 require 'google-maps'
 
-# Google Maps helpser
+# Google Maps helper
 module Mappy
   URL = 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id='
   POST = ' Saint Paul, MN'
