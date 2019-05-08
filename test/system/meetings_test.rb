@@ -8,14 +8,18 @@ class MeetingsTest < ApplicationSystemTestCase
   end
 
   test 'visiting the index' do
-    visit meetings_url
-    assert_selector 'h1', text: 'Meetings'
+    VCR.use_cassette('meetings_1') do
+      visit meetings_url
+      assert_selector 'h1', text: 'Meetings'
+    end
   end
 
   test 'filter city council' do
-    visit meetings_url
-    assert_equal 4, page.all(:css, 'tr.data').size
-    find(:css, '#meeting-filter').find(:option, 'City Council').select_option
-    assert_equal 2, page.all(:css, 'tr.data').size
+    VCR.use_cassette('notes_2') do
+      visit meetings_url
+      assert_equal 4, page.all(:css, 'tr.data').size
+      find(:css, '#meeting-filter').find(:option, 'City Council').select_option
+      assert_equal 2, page.all(:css, 'tr.data').size
+    end
   end
 end
