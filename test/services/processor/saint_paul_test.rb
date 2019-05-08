@@ -9,6 +9,16 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     end
   end
 
+  test 'process' do
+    VCR.use_cassette('stp_legistar_details_6EDC9EFD') do
+      assert_difference('Meeting.count', 10) do
+        assert_difference('Item.count', 345) do
+          @p.process
+        end
+      end
+    end
+  end
+
   test 'gets meeting rows' do
     assert_equal 11, @p.get_meeting_rows.count
   end
