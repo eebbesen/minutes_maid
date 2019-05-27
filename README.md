@@ -5,20 +5,27 @@ Collects data from meeting minutes allowing you-specific filters.
 Currently only works for Saint Paul meeting data from https://stpaul.legistar.com/Calendar.aspx, but the aim of the project is to make it easily adaptable for other entities.
 
 ## Populate data
-### locally
+### Locally
 ```bash
-bundle exec rake scrape_saint_paul
+bin/rake scrape_saint_paul
 ```
 
 ### Heroku deployment
-Add MM_GOOGLE_API_KEY value to settings.
+Add `MM_GOOGLE_API_KEY` value to settings.
 ```bash
 heroku run rake scrape_saint_paul
 ```
 I've got this scheduled on Heroku: https://devcenter.heroku.com/articles/scheduler#installing-the-add-on.
 
+
+## Fix data
+You may find that some Microsoft apostrophes cause odd display characters. You can fix this data by running
+```bash
+bin/rake fix_utf8
+```
+
 ## Development
-Initialize MM_GOOGLE_API_KEY value as an environment variable.
+Initialize `MM_GOOGLE_API_KEY` value as an environment variable.
 ### Unit tests
 ```bash
 bin/rails test
