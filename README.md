@@ -7,8 +7,7 @@ Currently only works for Saint Paul meeting data from https://stpaul.legistar.co
 ## Populate data
 ### Locally
 ```bash
-bin/
-rake scrape_saint_paul
+bin/rake scrape_saint_paul
 ```
 
 ### Heroku deployment
