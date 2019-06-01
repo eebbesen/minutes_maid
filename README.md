@@ -47,3 +47,34 @@ The items index takes a fairly long amount of time to load with a relatively sma
 MM_GOOGLE_API_KEY represents a Google Maps API key with the Places API enabled. Google currently offers up to 150,000 calls per day to this API for free, but does require you to have a credit card on file with Google.
 
 https://console.cloud.google.com/google/maps-apis/api-list
+
+
+## Heroku tools
+### Database record count
+Heroku Postgres hobby-dev plan allows you 10,000 records free of charge. To see how close you are use
+
+```bash
+heroku pg:info
+```
+Here's an example result:
+```
+~/minutes_maid$ heroku pg:info
+=== DATABASE_URL
+Plan:                  Hobby-dev
+Status:                Available
+Connections:           0/20
+PG Version:            10.7
+Created:               2019-02-02 16:08 UTC
+Data Size:             9.9 MB
+Tables:                6
+Rows:                  2050/10000 (In compliance)
+Fork/Follow:           Unsupported
+Rollback:              Unsupported
+Continuous Protection: Off
+Add-on:                postgresql-colorful-57037
+```
+
+### Database access via CLI
+```bash
+ heroku pg:psql
+ ```
