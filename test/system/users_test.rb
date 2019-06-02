@@ -55,7 +55,8 @@ class UsersTest < ApplicationSystemTestCase
   private
 
   def require_recaptcha(y=true)
-    return Recaptcha.configuration.skip_verify_env.delete('test') if y
-    Recaptcha.configuration.skip_verify_env.push('test') unless Recaptcha.configuration.skip_verify_env.include?('test')
+    r = Recaptcha.configuration.skip_verify_env
+    return r.delete('test') if y
+    r.push('test') unless r.include?('test')
   end
 end
