@@ -1,0 +1,44 @@
+<%= javascript_include_tag "users" %>
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <% if flash[:recaptcha_error] %>
+      <div id="recaptcha_error_explanation">
+        <%= flash[:recaptcha_error] %>
+      </div>
+    <% end %>
+    <%= recaptcha_tags(callback: 'toggleSignUpEnabled') %>
+  </div>
+
+  <div class="actions">
+    <% if recaptcha_tags.include?('data-sitekey') %>
+      <%= f.submit "Sign up", disabled: true %>
+    <% else %>
+      <%= f.submit "Sign up" %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
