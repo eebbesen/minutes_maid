@@ -1,4 +1,5 @@
 # Minutes Maid
+[![CircleCI](https://circleci.com/gh/eebbesen/minutes_maid.svg?style=svg)](https://circleci.com/gh/eebbesen/minutes_maid)
 
 Collects data from meeting minutes allowing you-specific filters.
 
