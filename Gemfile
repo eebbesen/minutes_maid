@@ -40,6 +40,7 @@ gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'google-maps'
 gem 'jquery-rails'
+gem 'recaptcha'
 gem 'sprockets-es6'
 
 group :production do
