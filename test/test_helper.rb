@@ -9,7 +9,7 @@ SimpleCov.start 'rails' do
   add_filter 'app/mailers/application_mailer.rb'
 end
 
-Webdrivers::Chromedriver.required_version = '74.0.3729.6'
+Webdrivers::Chromedriver.required_version = Webdrivers::Chromedriver.current_version
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
