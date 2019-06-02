@@ -24,14 +24,24 @@ You may find that some Microsoft apostrophes cause odd display characters. You c
 bin/rake fix_utf8
 ```
 
-## Development
-Initialize `MM_GOOGLE_API_KEY` value as an environment variable.
-### Unit tests
+## Development setup
+### Get a Google Maps API key
+https://developers.google.com/maps/documentation/embed/get-api-key
+
+Initialize `MM_GOOGLE_API_KEY` value as an environment variable. You may set this to any value for now as we don't currently use this API (but we do require a value).
+
+### Get a reCAPTCHA API key
+See https://github.com/ambethia/recaptcha for instructions. Use reCAPTCHA v2, and add `localhost` as one of the domains if you plan to use reCAPTCHA when developing on your local machine (or create a separate key for local development).
+
+Initialize `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY` as environment variables on your computer.
+
+### Tests
+#### Unit tests
 ```bash
 bin/rails test
 ```
 
-### System tests
+#### System tests
 ```bash
 bin/rails test:system
 ```
@@ -58,7 +68,7 @@ heroku pg:info
 ```
 Here's an example result:
 ```
-~/minutes_maid$ heroku pg:info
+$ heroku pg:info
 === DATABASE_URL
 Plan:                  Hobby-dev
 Status:                Available

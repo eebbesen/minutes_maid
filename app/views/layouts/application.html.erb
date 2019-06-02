@@ -18,13 +18,15 @@
         <%= link_to('Meetings', meetings_path, class: 'button hollow', id: 'meetings-button') unless request.path.match(/meeting/) %>
         <%= link_to 'Items', items_path, class: 'button hollow', id: 'items-button' unless request.path.match(/item/) %>
       </div>
-      <div class="top-bar-right">
-        <% if user_signed_in? %>
-          <b><%= current_user.email %></b> | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Login', new_user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %>
-        <% end %>
-      </div>
+      <% unless request.path.match(/users/) %>
+        <div class="top-bar-right">
+          <% if user_signed_in? %>
+            <b><%= current_user.email %></b> | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Login', new_user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <p id="notice"><%= notice %></p>
     <p id="alert"><%= alert %></p>
