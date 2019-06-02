@@ -15,8 +15,8 @@ jobs:
       - run:
           name: run_test
           command: bin/rails test
-      - run:
-          name: run_system_tests
-          command: bin/rails test:system
+#      - run:
+#          name: run_system_tests
+#          command: bin/rails test:system
       - store_artifacts:
           path: coverage
