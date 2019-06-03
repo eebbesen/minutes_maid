@@ -10,11 +10,11 @@ class NotesTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit notes_url
-    assert_selector 'h1', text: 'Notes'
+    assert_selector 'h1', text: 'My Notes'
   end
 
   test 'creating a Note' do
-    visit notes_url
+    visit "#{notes_url}?item_id=#{@note.item.id}"
     click_on 'New Note'
 
     fill_in 'Text', with: @note.text
@@ -22,6 +22,13 @@ class NotesTest < ApplicationSystemTestCase
 
     assert_text 'Note was successfully created'
     click_on 'Back'
+  end
+
+  test 'No Create Note option without item' do
+    visit notes_url
+    click_on 'New Note'
+
+    assert_equal 0, page.all(:css, '#notes-button').count
   end
 
   test 'updating a Note' do
@@ -42,5 +49,13 @@ class NotesTest < ApplicationSystemTestCase
     end
 
     assert_text 'Note was successfully destroyed'
+  end
+
+  test 'no Notes button, but Meetings and Items' do
+    visit notes_url
+
+    assert find(:css, '#meetings-button')
+    assert find(:css, '#items-button')
+    assert_equal 0, page.all(:css, '#notes-button').count
   end
 end

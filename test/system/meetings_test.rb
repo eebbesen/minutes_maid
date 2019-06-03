@@ -18,4 +18,10 @@ class MeetingsTest < ApplicationSystemTestCase
     find(:css, '#meeting-filter').find(:option, 'City Council').select_option
     assert_equal 2, page.all(:css, 'tr.data').size
   end
+
+  test 'no Meetings button, but Items button' do
+    visit meetings_url
+    assert find(:css, '#items-button')
+    assert_equal 0, page.all(:css, '#meetings-button').count
+  end
 end

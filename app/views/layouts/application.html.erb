@@ -15,8 +15,9 @@
   <body>
     <div class="top-bar">
       <div class="top-bar-left">
-        <%= link_to('Meetings', meetings_path, class: 'button hollow', id: 'meetings-button') unless request.path.match(/meeting/) %>
-        <%= link_to 'Items', items_path, class: 'button hollow', id: 'items-button' unless request.path.match(/item/) %>
+        <%= link_to('Meetings', meetings_path, class: 'button hollow header-button', id: 'meetings-button') unless (request.path == '/' || request.path.match(/meeting/)) %>
+        <%= link_to('Items', items_path, class: 'button hollow header-button', id: 'items-button') unless request.path.match(/item/) %>
+        <%= link_to('Notes', notes_path, class: 'button hollow header-button', id: 'notes-button') if (user_signed_in? && !request.path.match(/note/)) %>
       </div>
       <% unless request.path.match(/users/) %>
         <div class="top-bar-right">
