@@ -1,7 +1,9 @@
 <% header (@item ? @item.title : 'My Notes') %>
 
 <% if @notes.count < 1 %>
-  <h2>No notes yet -- add a note from an <%= link_to('item', items_path) %></h2>
+  <% unless @item %>
+    <h2>No notes yet -- add a note from an <%= link_to('item', items_path) %></h2>
+  <% end %>
 <% else %>
   <table>
     <thead>
@@ -25,10 +27,9 @@
       <% end %>
     </tbody>
   </table>
-
   <br>
 <% end %>
 
-<% if (@item && @item.id) || (@notes.first && @notes.first.item_id) %>
-  <%= link_to 'New Note', new_note_path(item_id: (@item ? @item.id : @notes.first.item_id)) %>
+<% if (@item && @item.id) %>
+  <%= link_to 'New Note', new_note_path(item_id: (@item ? @item.id : @notes.first.item_id)), id: 'new-note-button', class: 'button hollow header-button' %>
 <% end %>
