@@ -26,7 +26,6 @@ class NotesTest < ApplicationSystemTestCase
 
   test 'No Create Note option without item' do
     visit notes_url
-    click_on 'New Note'
 
     assert_equal 0, page.all(:css, '#notes-button').count
   end
