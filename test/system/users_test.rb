@@ -3,7 +3,6 @@
 require 'application_system_test_case'
 
 class UsersTest < ApplicationSystemTestCase
-
   test 'create user sign up initially disabled' do
     require_recaptcha
     visit new_user_registration_url
@@ -21,7 +20,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_text "Email can't be blank"
   end
 
-   test 'create user without matching passwords fails' do
+  test 'create user without matching passwords fails' do
     require_recaptcha false
     visit new_user_registration_url
     fill_in 'Email', with: 'mm@minutesmaid.gmail.com'
@@ -54,9 +53,10 @@ class UsersTest < ApplicationSystemTestCase
 
   private
 
-  def require_recaptcha(y=true)
+  def require_recaptcha(y = true)
     r = Recaptcha.configuration.skip_verify_env
     return r.delete('test') if y
+
     r.push('test') unless r.include?('test')
   end
 end
