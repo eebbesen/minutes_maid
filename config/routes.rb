@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   resources :items
   resources :meetings
 
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
     get '/users', to: 'registrations#new'
   end
