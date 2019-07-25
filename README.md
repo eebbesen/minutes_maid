@@ -15,6 +15,7 @@ bin/rake scrape_saint_paul
 Add `MM_GOOGLE_API_KEY` value to settings.
 ```bash
 heroku run rake scrape_saint_paul
+heroku run rake fix_utf8
 ```
 I've got this scheduled on Heroku: https://devcenter.heroku.com/articles/scheduler#installing-the-add-on.
 
@@ -40,6 +41,11 @@ Initialize `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY` as environment variab
 #### Unit tests
 ```bash
 bin/rails test
+```
+
+Run one test:
+```bash
+bin/rails test test/services/processor/saint_paul_test.rb:27
 ```
 
 #### System tests

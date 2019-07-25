@@ -23,6 +23,13 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal 11, @p.get_meeting_rows.count
   end
 
+  test 'gets meeting rows with pagination footer' do
+    VCR.use_cassette('stp_legistar_pagination_footer') do
+      p = Processor::SaintPaul.new
+      assert_equal 100, p.get_meeting_rows.count
+    end
+  end
+
   test 'gets meeting detail rows' do
     m = @p.get_meeting_rows('City Council').first
     url = Processor::SaintPaul.extract_meeting_data(m)[:details]
