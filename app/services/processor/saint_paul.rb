@@ -15,6 +15,7 @@ module Processor
       get_meeting_rows.each do |m|
         md = Processor::SaintPaul.extract_meeting_data(m)
         meeting = Processor::SaintPaul.send(:persist_meeting, md)
+        return unless meeting
         r = Processor::SaintPaul.get_meeting_detail_rows meeting[:details]
         next unless r
 
@@ -98,7 +99,12 @@ module Processor
 
     private_class_method def self.persist_meeting(data)
       d = data.clone
-      d[:date] = parse_date(d[:date])
+      begin
+        d[:date] = parse_date(d[:date])
+      rescue => ex
+        puts "swallowing error with date for #{data}\nmessage:#{ex.message}"
+        return
+      end
 
       Meeting.where(name: d[:name], date: d[:date]).first_or_create!(d).tap do |m|
         m.assign_attributes d
