@@ -16,6 +16,7 @@ module Processor
         md = Processor::SaintPaul.extract_meeting_data(m)
         meeting = Processor::SaintPaul.send(:persist_meeting, md)
         return unless meeting
+        puts "Processing #{meeting.name}: #{meeting.date}"
         r = Processor::SaintPaul.get_meeting_detail_rows meeting[:details]
         next unless r
 
@@ -73,7 +74,7 @@ module Processor
     # optional name of board/commission/committee/council/etc.
     # corresponds to Name column in UI
     def get_meeting_rows(name = nil)
-      return @doc.css('.rgMasterTable tbody tr') unless name
+      return @doc.css('.rgMasterTable > tbody tr') unless name
 
       @doc.css('.rgMasterTable tbody tr').select do |r|
         r.css('td').first.text.strip == name
