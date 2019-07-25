@@ -116,6 +116,22 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
     assert_equal d[:minutes], r.minutes
   end
 
+  # footer row we don't want to save
+  test 'persist meeting -- errors' do
+    ic = Meeting.count
+    d = {
+      name: "12\r\n\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\t\t  Page 1 of 2, items 1 to 100 of 131.",
+      date: '',
+      details: '',
+      agenda: '',
+      minutes: ''
+    }
+
+    Processor::SaintPaul.send(:persist_meeting, d)
+
+    assert_equal ic, Meeting.count
+  end
+
   test 'update meeting when it exists' do
     mc = Meeting.count
     d = {
