@@ -16,6 +16,7 @@ module Processor
         md = Processor::SaintPaul.extract_meeting_data(m)
         meeting = Processor::SaintPaul.send(:persist_meeting, md)
         return unless meeting
+
         puts "Processing #{meeting.name}: #{meeting.date}"
         r = Processor::SaintPaul.get_meeting_detail_rows meeting[:details]
         next unless r
@@ -102,7 +103,7 @@ module Processor
       d = data.clone
       begin
         d[:date] = parse_date(d[:date])
-      rescue => ex
+      rescue StandardError => ex
         puts "swallowing error with date for #{data}\nmessage:#{ex.message}"
         return
       end
