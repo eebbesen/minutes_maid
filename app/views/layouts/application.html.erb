@@ -20,16 +20,21 @@
         <%= link_to('Items', items_path, class: 'button hollow header-button', id: 'items-button') unless request.path.match(/item/) %>
         <%= link_to('Notes', notes_path, class: 'button hollow header-button', id: 'notes-button') if (user_signed_in? && !request.path.match(/note/)) %>
       </div>
-      <% unless request.path.match(/users/) %>
-        <div class="top-bar-right">
-          <% if user_signed_in? %>
-            <b><%= current_user.email %></b> | <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to 'Login', new_user_session_path %> | <%= link_to 'Sign up', new_user_registration_path %>
-          <% end %>
-        </div>
-      <% end %>
+
+      <% about_link = request.path.match(/about/) ? '' : (link_to 'About', static_pages_about_path) %>
+      <% username = user_signed_in? ? current_user.email : (link_to 'Login', new_user_session_path) %>
+      <% sign_action = user_signed_in? ? (link_to 'Sign out', destroy_user_session_path, method: :delete) : '' %>
+      <div class="top-bar-right">
+        <%= username %>
+        <% if sign_action.length > 0 %>
+        | <%= sign_action %>
+        <% end %>
+        <% if about_link.length > 0 %>
+        | <%= about_link %>
+        <% end %>
+      </div>
     </div>
+
     <p id="notice"><%= notice %></p>
     <p id="alert"><%= alert %></p>
 
