@@ -40,4 +40,15 @@ class ItemsTest < ApplicationSystemTestCase
     visit items_url
     assert_equal 0, page.all(:css, '#notes-button').count
   end
+
+  test 'menu bar when logged in' do
+    sign_in users(:user_one)
+    visit items_url
+    assert_selector '.top-bar-right', text: 'kim.smith@example.com | Sign out | About'
+  end
+
+  test 'menu bar when logged out' do
+    visit items_url
+    assert_selector '.top-bar-right', text: 'Login | About'
+  end
 end
