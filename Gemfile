@@ -50,6 +50,7 @@ end
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'sqlite3', '~> 1.3.6'
+  gem 'dotenv-rails', '2.7.5'
 end
 
 group :development do
