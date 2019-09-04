@@ -33,4 +33,6 @@ coverage
 
 notes.txt
 
+.DS_Store
+
 .env
