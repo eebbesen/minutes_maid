@@ -49,6 +49,7 @@ bin/rails test test/services/processor/saint_paul_test.rb:27
 ```
 
 #### System tests
+These require the CHROMEDRIVER_VERSION environment variable to be set at test runtime. You'll need a [Chromedriver version](https://chromedriver.chromium.org/downloads) in your path, and set CHROMEDRIVER_VERSION to match that.
 ```bash
 bin/rails test:system
 ```
