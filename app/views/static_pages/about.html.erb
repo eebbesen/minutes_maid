@@ -13,3 +13,7 @@
 <h3 class="question">Can I see the source code?</h3>
 <p class="answer">Yes! <a href="https://github.com/eebbesen/minutes_maid">minutes_maid on GitHub</a></p>
 </br>
+
+<h3 class="question">What git sha is running?</h3>
+<p class="answer"><%= ENV['SOURCE_VERSION'] || ENV['HEROKU_SLUG_COMMIT'] || `git log`.match(/\w{20}/)[0] || "I'm unsure -- this feature is only configured for Heroku or local deployments"%></p>
+</br>
