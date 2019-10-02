@@ -8,6 +8,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv.overload '.env.test' if ENV['RAILS_ENV'].include? 'test'
+Dotenv.overload '.env' if ENV['RAILS_ENV'].include? 'development'
+
 module MinutesMaid
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -18,7 +21,7 @@ module MinutesMaid
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # init Google
+    # init Google Maps API
     Google::Maps.configure do |config|
       config.authentication_mode = Google::Maps::Configuration::API_KEY
       config.api_key = ENV['MM_GOOGLE_API_KEY']

@@ -103,8 +103,8 @@ module Processor
       d = data.clone
       begin
         d[:date] = parse_date(d[:date])
-      rescue StandardError => ex
-        puts "swallowing error with date for #{data}\nmessage:#{ex.message}"
+      rescue StandardError => e
+        puts "swallowing error with date for #{data}\nmessage:#{e.message}"
         return
       end
 
