@@ -6,6 +6,11 @@ Collects data from meeting minutes allowing you-specific filters.
 Currently only works for Saint Paul meeting data from https://stpaul.legistar.com/Calendar.aspx, but the aim of the project is to make it easily adaptable for other entities.
 
 ## Development setup
+```bash
+bundle install
+RAILS_ENV=development bin/rails db:migrate
+```
+
 ### Get a Google Maps API key
 You need the [Google Places API](https://developers.google.com/places/web-service/intro) enabled for your key.
 
@@ -16,6 +21,12 @@ You need the [Google Places API](https://developers.google.com/places/web-servic
 See https://github.com/ambethia/recaptcha for instructions. Use reCAPTCHA v2, and add `localhost` as one of the domains if you plan to use reCAPTCHA when developing on your local machine (or create a separate key for local development).
 
 Initialize `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY` as environment variables on your computer.
+
+### Run the app locally
+You will need to populate your local data in order to see anything in the app, see the "Populate Data" instructions below.
+```bash
+bin/rails s
+```
 
 ### Tests
 Minutes Maid uses [dotenv-rails](https://github.com/bkeepers/dotenv) to provide a dummy API key for unit testing (see .env.test) in conjunction with [vcr](https://github.com/vcr/vcr).
