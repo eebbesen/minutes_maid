@@ -5,32 +5,12 @@ Collects data from meeting minutes allowing you-specific filters.
 
 Currently only works for Saint Paul meeting data from https://stpaul.legistar.com/Calendar.aspx, but the aim of the project is to make it easily adaptable for other entities.
 
-## Populate data
-### Locally
-```bash
-bin/rake scrape_saint_paul
-```
-
-### Heroku deployment
-Add `MM_GOOGLE_API_KEY` value to settings.
-```bash
-heroku run rake scrape_saint_paul
-heroku run rake fix_utf8
-```
-I've got this scheduled on Heroku: https://devcenter.heroku.com/articles/scheduler#installing-the-add-on.
-
-
-## Fix data
-You may find that some Microsoft apostrophes cause odd display characters. You can fix this data by running
-```bash
-bin/rake fix_utf8
-```
-
 ## Development setup
 ### Get a Google Maps API key
-https://developers.google.com/maps/documentation/embed/get-api-key
+https://developers.google.com/places/web-service/intro -- you need the Places API enabled for your key.
 
-Initialize `MM_GOOGLE_API_KEY` value as an environment variable. You may set this to any value for now as we don't currently use this API (but we do require a value).
+* Initialize `MM_GOOGLE_API_KEY` value as an environment variable set to your API key
+* OR copy .env.template to .env and put your API key in .env (don't commit to the repo!)
 
 ### Get a reCAPTCHA API key
 See https://github.com/ambethia/recaptcha for instructions. Use reCAPTCHA v2, and add `localhost` as one of the domains if you plan to use reCAPTCHA when developing on your local machine (or create a separate key for local development).
@@ -38,6 +18,8 @@ See https://github.com/ambethia/recaptcha for instructions. Use reCAPTCHA v2, an
 Initialize `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY` as environment variables on your computer.
 
 ### Tests
+Minutes Maid uses [dotenv-rails](https://github.com/bkeepers/dotenv) to provide a dummy API key for unit testing (see .env.test) in conjunction with [vcr](https://github.com/vcr/vcr).
+
 #### Unit tests
 ```bash
 bin/rails test
@@ -66,6 +48,26 @@ The items index takes a fairly long amount of time to load with a relatively sma
 
 https://console.cloud.google.com/google/maps-apis/api-list
 
+## Populate data
+### Locally
+```bash
+bin/rake scrape_saint_paul
+```
+
+### Heroku deployment
+Add `MM_GOOGLE_API_KEY` value to settings.
+```bash
+heroku run rake scrape_saint_paul
+heroku run rake fix_utf8
+```
+I've got this scheduled on Heroku: https://devcenter.heroku.com/articles/scheduler#installing-the-add-on.
+
+
+## Fix data
+You may find that some Microsoft apostrophes cause odd display characters. You can fix this data by running
+```bash
+bin/rake fix_utf8
+```
 
 ## Heroku tools
 ### Database record count

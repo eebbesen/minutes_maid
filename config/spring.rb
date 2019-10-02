@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 %w[
+  .env.test
   .ruby-version
   .rbenv-vars
   tmp/restart.txt
