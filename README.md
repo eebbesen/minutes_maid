@@ -9,8 +9,8 @@ Currently only works for Saint Paul meeting data from https://stpaul.legistar.co
 ### Get a Google Maps API key
 https://developers.google.com/places/web-service/intro -- you need the Places API enabled for your key.
 
-* Initialize `MM_GOOGLE_API_KEY` value as an environment variable set to your API key
-* OR copy .env.template to .env and put your API key in .env (don't commit to the repo!)
+  * Initialize `MM_GOOGLE_API_KEY` value as an environment variable set to your API key
+  * OR copy .env.template to .env and put your API key in .env (don't commit to the repo!)
 
 ### Get a reCAPTCHA API key
 See https://github.com/ambethia/recaptcha for instructions. Use reCAPTCHA v2, and add `localhost` as one of the domains if you plan to use reCAPTCHA when developing on your local machine (or create a separate key for local development).
