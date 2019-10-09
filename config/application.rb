@@ -24,7 +24,7 @@ module MinutesMaid
     # init Google Maps API
     Google::Maps.configure do |config|
       config.authentication_mode = Google::Maps::Configuration::API_KEY
-      config.api_key = ENV['MM_GOOGLE_API_KEY']
+      config.api_key = ENV['MM_GOOGLE_API_KEY'] || ''
     end
   end
 end

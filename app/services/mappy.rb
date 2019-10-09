@@ -13,7 +13,7 @@ module Mappy
 
       begin
         places = Google::Maps.places(place + POST)
-      rescue Google::Maps::ZeroResultsException => e
+      rescue Google::Maps::ZeroResultsException, Google::Maps::InvalidResponseException => e
         puts "Exception in Mappy#link for #{place}: #{e.message}"
         return ''
       end
