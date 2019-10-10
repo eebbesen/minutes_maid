@@ -51,6 +51,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'sqlite3', '~> 1.3.6'
+  gem 'mocha'
 end
 
 group :development do
