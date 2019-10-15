@@ -46,7 +46,7 @@ class MappyTest < ActiveSupport::TestCase
     puts 'error in test!!!'
   ensure
     Google::Maps.configure do |config|
-      config.api_key = 'AIzaSyCTQ7QGkpvV8mw_6HDfxw-4_Sd7vNsJ6G0'
+      config.api_key = ENV['MM_GOOGLE_API_KEY']
     end
   end
 end
