@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/place/autocomplete/json?input=1600%20Grand%20Ave%20Saint%20Paul,%20MN&key=AIzaSyCTQ7QGkpvV8mw_6HDfxw-4_Sd7vNsJ6G0&language=en
+    uri: https://maps.googleapis.com/maps/api/place/autocomplete/json?input=1600%20Grand%20Ave%20Saint%20Paul,%20MN&key=<%=ENV['MM_GOOGLE_API_KEY']%>&language=en
     body:
       encoding: UTF-8
       string: ''
@@ -121,6 +121,6 @@ http_interactions:
            ],
            "status" : "OK"
         }
-    http_version: 
+    http_version:
   recorded_at: Sun, 24 Feb 2019 21:03:31 GMT
 recorded_with: VCR 4.0.0
