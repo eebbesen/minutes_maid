@@ -22,12 +22,31 @@ class MappyTest < ActiveSupport::TestCase
   test 'does not blow up when the google places api returns request denied' do
     VCR.use_cassette('google_maps_mac') do
       Google::Maps
-          .expects(:places)
-          .raises(Google::Maps::InvalidResponseException, 'Google returned an error status: REQUEST_DENIED')
+        .expects(:places)
+        .raises(Google::Maps::InvalidResponseException, 'Google returned an error status: REQUEST_DENIED')
 
       l = Mappy.link('1600 Grand Ave')
 
       assert_equal '', l
+    end
+  end
+
+  test 'does not call the google places api when no api key' do
+    Google::Maps.configure do |config|
+      config.api_key = ''
+    end
+
+    Google::Maps
+        .expects(:places).never
+
+    l = Mappy.link('1600 Grand Ave')
+
+    assert_equal '', l
+  rescue
+    puts 'error in test!!!'
+  ensure
+    Google::Maps.configure do |config|
+      config.api_key = 'AIzaSyCTQ7QGkpvV8mw_6HDfxw-4_Sd7vNsJ6G0'
     end
   end
 end

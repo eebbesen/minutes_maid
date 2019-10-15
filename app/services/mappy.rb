@@ -10,6 +10,7 @@ module Mappy
     def link(place)
       places = []
       return '' if place.blank?
+      return '' if Google::Maps.api_key.blank?
 
       begin
         places = Google::Maps.places(place + POST)

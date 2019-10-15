@@ -23,6 +23,12 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
 end
 
+# this key is not valid but referenced by VCR cassettes
+Google::Maps.configure do |config|
+  config.authentication_mode = Google::Maps::Configuration::API_KEY
+  config.api_key = 'AIzaSyCTQ7QGkpvV8mw_6HDfxw-4_Sd7vNsJ6G0'
+end
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
