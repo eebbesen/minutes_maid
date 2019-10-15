@@ -16,7 +16,6 @@ class MappyTest < ActiveSupport::TestCase
     l = Mappy.link('')
 
     assert_equal '', l
-
   end
 
   test 'does not blow up when the google places api returns request denied' do
@@ -37,12 +36,12 @@ class MappyTest < ActiveSupport::TestCase
     end
 
     Google::Maps
-        .expects(:places).never
+      .expects(:places).never
 
     l = Mappy.link('1600 Grand Ave')
 
     assert_equal '', l
-  rescue
+  rescue StandardError
     puts 'error in test!!!'
   ensure
     Google::Maps.configure do |config|
