@@ -21,6 +21,14 @@ VCR.configure do |config|
   config.cassette_library_dir = 'vcr_cassettes'
   config.hook_into :webmock
   config.allow_http_connections_when_no_cassette = true
+  config.default_cassette_options = { erb: true }
+end
+
+# this key is not valid but referenced by VCR cassettes
+ENV['MM_GOOGLE_API_KEY'] = 'AIzaSyCTQ7QGkpvV8mw_6HDfxw-4_Sd7vNsJ6G0'
+Google::Maps.configure do |config|
+  config.authentication_mode = Google::Maps::Configuration::API_KEY
+  config.api_key = ENV['MM_GOOGLE_API_KEY']
 end
 
 class ActiveSupport::TestCase
