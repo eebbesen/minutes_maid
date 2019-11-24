@@ -40,6 +40,7 @@ gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'google-maps'
 gem 'jquery-rails'
+gem "loofah", ">= 2.3.1"
 gem 'recaptcha'
 gem 'sprockets-es6'
 
