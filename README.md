@@ -124,8 +124,13 @@ For
 docker-compose run web bin/rake db:test:prepare
 ```
 
-### Seed
+### Seed development database
 Run this whenever you want to seed/re-seed the development database. This will erase whatever you may already have in there so be careful!
 ```bash
 docker-compose run web bin/rake db:migrate
+```
+
+### ssh to container
+```bash
+docker exec -it minutes_maid_web_1 /bin/bash
 ```
