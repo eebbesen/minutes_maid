@@ -118,11 +118,19 @@ docker-compose up
 docker-compose run web bin/rake db:create
 ```
 
+### Tests
 #### Test Prepare
-For
 ```bash
 docker-compose run web bin/rake db:test:prepare
 ```
+
+#### Unit Tests
+```bash
+docker-compose run web bin/rails test
+```
+
+#### System Tests
+I haven't figured this out yet -- issues with Chrome running on the Docker image.
 
 ### Seed development database
 Run this whenever you want to seed/re-seed the development database. This will erase whatever you may already have in there so be careful!
