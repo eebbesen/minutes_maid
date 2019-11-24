@@ -109,3 +109,23 @@ Add-on:                postgresql-colorful-57037
 ```bash
  heroku pg:psql
  ```
+
+## Docker
+### Setup
+You'll only need to do this once per container creation. This will download all of the Docker components you need for the web app and database, then create the dev and tests database instances.
+```bash
+docker-compose up
+docker-compose run web bin/rake db:create
+```
+
+#### Test Prepare
+For
+```bash
+docker-compose run web bin/rake db:test:prepare
+```
+
+### Seed
+Run this whenever you want to seed/re-seed the development database. This will erase whatever you may already have in there so be careful!
+```bash
+docker-compose run web bin/rake db:migrate
+```
