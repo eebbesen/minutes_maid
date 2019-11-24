@@ -6,6 +6,10 @@ Collects data from meeting minutes allowing you-specific filters.
 Currently only works for Saint Paul meeting data from https://stpaul.legistar.com/Calendar.aspx, but the aim of the project is to make it easily adaptable for other entities.
 
 ## Development setup
+### Database
+By default development and test will use PostgreSQL. See config/database.yml for commented-out SQLite configuration.
+
+### Install
 ```bash
 bundle install
 RAILS_ENV=development bin/rails db:migrate
@@ -138,7 +142,12 @@ Run this whenever you want to seed/re-seed the development database. This will e
 docker-compose run web bin/rake db:migrate
 ```
 
-### ssh to container
+### Run Application
+```bash
+docker-compose run web bin/rake scrape_saint_paul
+```
+
+### ssh to Container
 ```bash
 docker exec -it minutes_maid_web_1 /bin/bash
 ```
