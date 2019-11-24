@@ -1,5 +1,7 @@
 FROM ruby:2.5.3
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
 RUN gem install bundler -v 2.0.1
 RUN mkdir /minutes_maid
 WORKDIR /minutes_maid
