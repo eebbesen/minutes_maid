@@ -15,7 +15,7 @@ module Processor
       get_meeting_rows.each do |m|
         md = Processor::SaintPaul.extract_meeting_data(m)
         meeting = Processor::SaintPaul.send(:persist_meeting, md)
-        return unless meeting
+        next unless meeting
 
         puts "Processing #{meeting.name}: #{meeting.date}"
         r = Processor::SaintPaul.get_meeting_detail_rows meeting[:details]
