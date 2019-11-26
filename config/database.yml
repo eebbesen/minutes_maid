@@ -31,15 +31,15 @@ default: &default
 
 development:
   <<: *default
-  database: mintesmaid_development
+  database: minutesmaid_development
 
 test:
   <<: *default
-  database: mintesmaid_test
+  database: minutesmaid_test
 
 production:
   database: minutesmaid_prod
-  username: mintesmaid
+  username: minutesmaid
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
   pool: 5
   timeout: 5000
