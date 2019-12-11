@@ -33,6 +33,6 @@ jobs:
           command: docker run --network project_minutes_net minutes_maid env RAILS_ENV=test bin/rails test
       - run:
           name: run_system_tests
-          command: docker run --network project_minutes_net minutes_maid env RAILS_ENV=test bin/rails test:system
+          command: docker run --network project_minutes_net minutes_maid env bin/rails test:system
       - store_artifacts:
           path: coverage
