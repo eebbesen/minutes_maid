@@ -8,6 +8,8 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def check_captcha
+    puts "*********************************** SITE_KEY #{ENV['RECAPTCHA_SITE_KEY'].split('').last}"
+    puts "*********************************** SECRET_KEY #{ENV['RECAPTCHA_SECRET_KEY'].split('').last}"
     return if verify_recaptcha
 
     self.resource = resource_class.new sign_up_params
