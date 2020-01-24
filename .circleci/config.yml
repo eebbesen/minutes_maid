@@ -10,13 +10,29 @@ jobs:
     steps:
       - checkout
       - run:
-          name: bundle install
-          command: gem install bundler; bundle install
+          name: install docker compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - setup_remote_docker
+      - run:
+          name: build docker image
+          command: docker build -t minutes_maid .
+      - run:
+          name: start services
+          command: docker-compose up -d
+      - run:
+          name: init database
+          command: docker run --network project_minutes_net minutes_maid env RAILS_ENV=test bin/rake db:test:prepare
+      - run:
+          name: migrate database
+          command: docker run --network project_minutes_net minutes_maid env RAILS_ENV=test bin/rake db:migrate
       - run:
           name: run_test
-          command: bin/rails test
-#      - run:
-#          name: run_system_tests
-#          command: bin/rails test:system
+          command: docker run --network project_minutes_net minutes_maid env RAILS_ENV=test bin/rails test
+      # - run:
+      #     name: run_system_tests
+      #     command: docker run --network project_minutes_net minutes_maid env bin/rails test:system
       - store_artifacts:
           path: coverage

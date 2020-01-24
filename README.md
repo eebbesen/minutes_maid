@@ -6,6 +6,10 @@ Collects data from meeting minutes allowing you-specific filters.
 Currently only works for Saint Paul meeting data from https://stpaul.legistar.com/Calendar.aspx, but the aim of the project is to make it easily adaptable for other entities.
 
 ## Development setup
+### Database
+By default development and test will use PostgreSQL. See config/database.yml for commented-out SQLite configuration.
+
+### Install
 ```bash
 bundle install
 RAILS_ENV=development bin/rails db:migrate
@@ -109,3 +113,41 @@ Add-on:                postgresql-colorful-57037
 ```bash
  heroku pg:psql
  ```
+
+## Docker
+### Setup
+You'll only need to do this once per container creation. This will download all of the Docker components you need for the web app and database, then create the dev and tests database instances.
+```bash
+docker-compose up
+docker-compose run web bin/rake db:create
+```
+
+### Tests
+#### Test Prepare
+```bash
+docker-compose run web bin/rake db:test:prepare
+```
+
+#### Unit Tests
+```bash
+docker-compose run web bin/rails test
+```
+
+#### System Tests
+I haven't figured this out yet -- issues with Chrome running on the Docker image.
+
+### Seed development database
+Run this whenever you want to seed/re-seed the development database. This will erase whatever you may already have in there so be careful!
+```bash
+docker-compose run web bin/rake db:migrate
+```
+
+### Run Application
+```bash
+docker-compose run web bin/rake scrape_saint_paul
+```
+
+### ssh to Container
+```bash
+docker exec -it minutes_maid_web_1 /bin/bash
+```
