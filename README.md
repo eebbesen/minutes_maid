@@ -160,4 +160,4 @@ It is recommended to push to a test Heroku application before going to productio
 1. `heroku container:push web -a minutes-maid-test`
 1. `heroku container:release web -a minutes-maid-test`
 1. If this is your first deployment to the Heroku app you'll need to run migrations `heroku run bin/rails db:migrate RAILS_ENV=production -a minutes-maid-test`
-1. If you wish to populate/refresh meetings and items run `heroku run bin/rake scrape_saint_paul -a minutes-maid-test`
+1. If you wish to populate/update meetings and items run `heroku run bin/rake scrape_saint_paul -a minutes-maid-test`
