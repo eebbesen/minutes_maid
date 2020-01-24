@@ -151,3 +151,13 @@ docker-compose run web bin/rake scrape_saint_paul
 ```bash
 docker exec -it minutes_maid_web_1 /bin/bash
 ```
+
+### Deployment of the container to Heroku
+#### Setup
+It is recommended to push to a test Heroku application before going to production. To do this, provision a new Heroku application and add the PostgreSQL dyno to it. I created `minutes-maid-test` -- you'll need a different app name :).
+
+#### Deployment
+1. `heroku container:push web -a minutes-maid-test`
+1. `heroku container:release web -a minutes-maid-test`
+1. If this is your first deployment to the Heroku app you'll need to run migrations `heroku run bin/rails db:migrate RAILS_ENV=production -a minutes-maid-test`
+1. If you wish to populate/refresh meetings and items run `heroku run bin/rake scrape_saint_paul -a minutes-maid-test`
