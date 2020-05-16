@@ -10,6 +10,7 @@ gem 'puma', '>= 4.3.3'
 gem 'rack', '>= 2.0.8'
 gem 'rails', '~> 5.2.4'
 gem 'sass-rails', '~> 5.0'
+gem 'rails-html-sanitizer', '~> 1.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
