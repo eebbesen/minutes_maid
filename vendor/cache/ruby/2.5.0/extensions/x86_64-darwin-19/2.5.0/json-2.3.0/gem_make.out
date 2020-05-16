@@ -1,0 +1,13 @@
+current directory: /Users/eebbesen/p3/minutes_maid/vendor/cache/ruby/2.5.0/gems/json-2.3.0/ext/json
+/Users/eebbesen/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20200516-47317-5p71ac.rb extconf.rb
+creating Makefile
+
+current directory: /Users/eebbesen/p3/minutes_maid/vendor/cache/ruby/2.5.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/eebbesen/p3/minutes_maid/vendor/cache/ruby/2.5.0/gems/json-2.3.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/eebbesen/p3/minutes_maid/vendor/cache/ruby/2.5.0/gems/json-2.3.0/ext/json
+make "DESTDIR=" install

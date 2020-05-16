@@ -1,0 +1,15 @@
+current directory: /Users/eebbesen/p3/minutes_maid/vendor/cache/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/eebbesen/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20200516-47317-wkbbf7.rb extconf.rb
+creating Makefile
+
+current directory: /Users/eebbesen/p3/minutes_maid/vendor/cache/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/eebbesen/p3/minutes_maid/vendor/cache/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/eebbesen/p3/minutes_maid/vendor/cache/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20200516-47317-1jss4j3/skiptrace/internal

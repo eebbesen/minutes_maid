@@ -8,7 +8,7 @@ ruby '2.5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'puma', '>= 3.12.2'
 gem 'rack', '>= 2.0.8'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 5.2.4'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
