@@ -288,7 +288,7 @@ DEPENDENCIES
   mini_racer
   mocha
   pg
-  puma (>= 3.12.2)
+  puma (>= 4.3.3)
   rack (>= 2.0.8)
   rails (~> 5.2.4)
   recaptcha
