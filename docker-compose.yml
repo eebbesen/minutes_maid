@@ -2,10 +2,14 @@ version: '3'
 services:
   db:
     image: postgres
+    environment:
+      - POSTGRES_PASSWORD=abcd1234
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     networks:
       - minutes_net
+    ports:
+      - "5432:5432"
   web:
     build:
       context: .
