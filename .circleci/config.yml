@@ -25,6 +25,8 @@ jobs:
       - run:
           name: init database
           command: docker run --network project_minutes_net minutes_maid env RAILS_ENV=test bin/rake db:test:prepare
+          environment:
+            DATABASE_URL: "postgres://root@localhost:5432/mintesmaid_test"
       - run:
           name: migrate database
           command: docker run --network project_minutes_net minutes_maid env RAILS_ENV=test bin/rake db:migrate
