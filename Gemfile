@@ -8,7 +8,7 @@ ruby '2.5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'puma', '>= 4.3.3'
 gem 'rack', '>= 2.0.8'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 5.2.4.3'
 gem 'sass-rails', '~> 5.0'
 gem 'rails-html-sanitizer', '~> 1.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'actionpack', '>= 5.2.4.3'
+gem 'activesupport', '>= 5.2.4.3'
+gem 'activestorage', '>= 5.2.4.3'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'font-awesome-rails'

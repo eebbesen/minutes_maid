@@ -24,7 +24,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
+  host: localhost
   username: postgres
   password: abcd1234
   pool: 5
@@ -32,6 +32,7 @@ default: &default
 development:
   <<: *default
   database: minutesmaid_development
+  host: localhost
 
 test:
   <<: *default
