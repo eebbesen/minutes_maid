@@ -1,3 +1,3 @@
 exclude_paths:
   - db/schema.rb
-  - vendor
+  - vendor/**/*
