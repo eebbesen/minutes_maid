@@ -275,4 +275,34 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
     assert_equal 'https://stpaul.legistar.com/endpoint123', Processor::SaintPaul.send(:urlify, r)
   end
+
+  test '#extract_meeting_detail_data no link child' do
+    # Nokogiri::XML::Element
+    row = <<~ROW
+<td nowrap><font face="Tahoma" size="2">
+                                                                <a id="ctl00_ContentPlaceHolder1_gridMain_ctl00_ctl04_hypFile"><font face="Tahoma" color="Blue" size="2">&nbsp;</font></a>
+                                                            </font></td>
+<td><font face="Tahoma" size="2">1</font></td>
+<td><font face="Tahoma" size="2">&nbsp;</font></td>
+<td><font face="Tahoma" size="2">&nbsp;</font></td>
+<td><font face="Tahoma" size="2">Resolution</font></td>
+<td><font face="Tahoma" size="2">Audit Workgroup</font></td>
+<td><font face="Tahoma" size="2">&nbsp;</font></td>
+<td><font face="Tahoma" size="2">&nbsp;</font></td>
+<td><font face="Tahoma" size="2">
+                                                                <a id="ctl00_ContentPlaceHolder1_gridMain_ctl00_ctl04_hypDetails" onclick="radopen('HistoryDetail.aspx?ID=20408559&amp;GUID=00837786-C814-4D04-A9DE-DB54D0D251EB', 'HistoryDetail');return false;" href="#"><font face="Tahoma" color="Blue" size="2">Action&nbsp;details</font></a>
+                                                            </font></td>
+<td><font face="Tahoma" size="2">
+                                                                <span style="white-space: nowrap;">
+
+
+                                                                    <a id="ctl00_ContentPlaceHolder1_gridMain_ctl00_ctl04_hypVideo" class="historyVideoIndexNotAvailableLink"><font face="Tahoma" color="Gray" size="2">Not&nbsp;available</font></a>
+                                                                </span>
+                                                            </font></td>
+    ROW
+
+    nrow = Nokogiri::XML::Document.parse row
+    r = Processor::SaintPaul.extract_meeting_detail_data nrow
+  end
+
 end
