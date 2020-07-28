@@ -60,17 +60,19 @@ module Processor
       tds = row.css('td')
       {}.tap do |a|
         unless tds.first.text == 'No records to display.'
-          a[:file_number] = tds.first.text.strip
-          a[:link] = "#{URL}#{tds.first.children.first.children[1]['href'].strip}"
-          a[:version] = tds[1].text.strip
-          a[:name] = tds[3].text.strip
-          a[:item_type] = tds[4].text.strip
-          a[:title] = tds[5].text.strip
-          a[:action] = tds[6].text.strip
-          a[:result] = tds[7].text.strip
-        rescue StandardError => ex
-          puts "#{ex.message} from #{tds.to_html}"
-          raise ex
+          begin
+            a[:file_number] = tds.first.text.strip
+            a[:link] = "#{URL}#{tds.first.children.first.children[1]['href'].strip}"
+            a[:version] = tds[1].text.strip
+            a[:name] = tds[3].text.strip
+            a[:item_type] = tds[4].text.strip
+            a[:title] = tds[5].text.strip
+            a[:action] = tds[6].text.strip
+            a[:result] = tds[7].text.strip
+          rescue StandardError => ex
+            puts "#{ex.message} from #{tds.to_html}"
+            raise ex
+          end
         end
       end
     end
