@@ -62,7 +62,7 @@ module Processor
         unless tds.first.text == 'No records to display.'
           begin
             a[:file_number] = tds.first.text.strip
-            a[:link] = "#{URL}#{tds.first.children.first.children[1]['href'].strip}"
+            a[:link] = "#{URL}#{tds.first.children.first.children[1]['href'].strip}" if tds.first.children.first.children[1]
             a[:version] = tds[1].text.strip
             a[:name] = tds[3].text.strip
             a[:item_type] = tds[4].text.strip
@@ -70,7 +70,7 @@ module Processor
             a[:action] = tds[6].text.strip
             a[:result] = tds[7].text.strip
           rescue StandardError => ex
-            puts "#{ex.message} from #{tds.to_html}"
+            puts "FAILED_TO_PARSE:\n#{ex.message} from #{tds.to_html}"
             raise ex
           end
         end

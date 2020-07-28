@@ -275,4 +275,53 @@ class Processor::SaintPaulTest < ActiveSupport::TestCase
 
     assert_equal 'https://stpaul.legistar.com/endpoint123', Processor::SaintPaul.send(:urlify, r)
   end
+
+  test '#extract_meeting_detail_data no link child' do
+    # Nokogiri::XML::Element
+    row = <<~ROW
+      <tr class="rgRow" valign="top" id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00__0" style="font-family:Tahoma;font-size:10pt;">
+              <td class="rgSorted">7/14/2020</td><td>1</td><td style="white-space:nowrap;">
+                                                                <a id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl04_hypBody" style="color:Black;font-family:Tahoma;font-size:10pt;">Mayor's Office</a>
+                                                            </td><td>Signed</td><td>&nbsp;</td><td>
+                                                                <a id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl04_hypDetails" onclick="radopen('HistoryDetail.aspx?ID=20458353&amp;GUID=3C736A0C-22EC-415B-B3E7-24179D3044E0', 'HistoryDetail');return false;" href="#" style="color:Blue;font-family:Tahoma;font-size:10pt;">Action&nbsp;details</a>
+                                                            </td><td>
+                                                                <a id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl04_hypMeetingDetail" class="meeting_NoMeeting" style="color:Gray;font-family:Tahoma;font-size:10pt;">Meeting&nbsp;details</a>
+                                                            </td><td>
+                                                                <span style="white-space: nowrap;">
+                                                                    
+                                                                    
+                                                                    <a id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl04_hypVideo" class="historyVideoIndexNotAvailableLink" style="color:Gray;font-family:Tahoma;font-size:10pt;">Not&nbsp;available</a>
+                                                                </span>
+                                                            </td>
+            </tr>
+    ROW
+
+    nrow = Nokogiri::XML::Document.parse row
+    r = Processor::SaintPaul.extract_meeting_detail_data nrow
+  end
+
+  test '#extract_meeting_detail_data no href' do
+    # Nokogiri::XML::Element
+    row =<<~ROW
+      <tr class="rgAltRow rgSelectedRow" valign="top" id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00__1" style="font-family:Tahoma;font-size:10pt;">
+                <td class="rgSorted">7/8/2020</td><td>1</td><td style="white-space:nowrap;">
+                                                                  <a id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl06_hypBody" style="color:Black;font-family:Tahoma;font-size:10pt;">City Council</a>
+                                                              </td><td>&nbsp;</td><td>&nbsp;</td><td>
+                                                                  <a id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl06_hypDetails" title="Please note: this meeting's minutes have not been finalized yet. Actions taken on legislation and their results are not available." class="draftActionHyplink" style="color:Gray;font-family:Tahoma;font-size:10pt;">Not&nbsp;available</a>
+                                                              </td><td>
+                                                                  <a id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl06_hypMeetingDetail" href="MeetingDetail.aspx?ID=796359&amp;GUID=F6E91B5D-423C-43DB-9B10-20F139562BFA&amp;Options=&amp;Search=" style="color:Blue;font-family:Tahoma;font-size:10pt;">Meeting&nbsp;details</a>
+                                                              </td><td>
+                                                                  <span style="white-space: nowrap;">
+                                                                      <img id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl06_imgVideo" src="Images/Video.gif" alt="Video" style="border-width:0px;">
+                                                                      
+                                                                      <a id="ctl00_ContentPlaceHolder1_gridLegislation_ctl00_ctl06_hypVideo" onclick="window.open('Video.aspx?Mode=Granicus&amp;ID1=3679&amp;ID2=485880&amp;Mode2=Video','video');return false;" href="#" style="color:Blue;font-family:Tahoma;font-size:10pt;">Video</a>
+                                                                  </span>
+                                                              </td>
+              </tr>
+    ROW
+
+    nrow = Nokogiri::XML::Document.parse row
+    r = Processor::SaintPaul.extract_meeting_detail_data nrow
+  end
+
 end
