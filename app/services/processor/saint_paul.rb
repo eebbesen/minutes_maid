@@ -62,7 +62,7 @@ module Processor
         unless tds.first.text == 'No records to display.'
           begin
             a[:file_number] = tds.first.text.strip
-            a[:link] = "#{URL}#{tds.first.children.first.children[1]['href'].strip}" if tds.first.children.first.children[1]
+            a[:link] = "#{URL}#{tds.first.children.first.children[1]['href'].strip}" if tds.first.children.first.children[1]['href']
             a[:version] = tds[1].text.strip
             a[:name] = tds[3].text.strip
             a[:item_type] = tds[4].text.strip
