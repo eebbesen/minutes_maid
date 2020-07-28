@@ -68,6 +68,9 @@ module Processor
           a[:title] = tds[5].text.strip
           a[:action] = tds[6].text.strip
           a[:result] = tds[7].text.strip
+        rescue StandardError => ex
+          puts "#{ex.message} from #{tds.to_html}"
+          raise ex
         end
       end
     end
