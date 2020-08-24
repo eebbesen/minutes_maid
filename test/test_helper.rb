@@ -10,8 +10,6 @@ SimpleCov.start 'rails' do
 end
 
 # Webdrivers::Chromedriver.update # this will auto-update chromedriver version
-puts "*************** Chromedriver version: #{Webdrivers::Chromedriver.current_version} ***************"
-Webdrivers::Chromedriver.required_version = ENV['CHROMEDRIVER_VERSION']
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
