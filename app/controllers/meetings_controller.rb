@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+##
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[show edit update destroy]
 
   # GET /meetings
   # GET /meetings.json
   def index
+    ahoy.track 'MeetingsController'
     @meetings = Meeting.all.order(date: :desc).order(:name)
   end
 

@@ -1,6 +1,32 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
+  NewCops: enable
   Exclude:
     - 'db/schema.rb'
     - 'db/seeds.rb'
+    - 'vendor/**/*'
+
+Layout/LineLength:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'test/**/*'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/models/ahoy/**/*'
+    - config/initializers/ahoy.rb
+
+Style/Documentation:
+  Exclude:
+    - 'app/models/ahoy/**/*'
+    - 'db/**/*'
+    - 'test/**/*'

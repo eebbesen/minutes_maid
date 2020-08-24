@@ -2,6 +2,7 @@
 
 # from https://github.com/plataformatec/devise/wiki/How-To:-Use-Recaptcha-with-Devise
 
+##
 class RegistrationsController < Devise::RegistrationsController
   prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
 

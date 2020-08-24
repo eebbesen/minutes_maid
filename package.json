@@ -1,5 +1,7 @@
 {
   "name": "minutes_maid",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "ahoy.js": "^0.3.7"
+  }
 }

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Processor
+  ##
   class SaintPaul
     URL = 'https://stpaul.legistar.com/'
     MAIN = 'Calendar.aspx'
@@ -69,9 +70,9 @@ module Processor
             a[:title] = tds[5].text.strip if tds[5]
             a[:action] = tds[6].text.strip if tds[6]
             a[:result] = tds[7].text.strip if tds[7]
-          rescue StandardError => ex
-            puts "FAILED_TO_PARSE:\n#{ex.message} from #{tds.to_html}"
-            raise ex
+          rescue StandardError => e
+            puts "FAILED_TO_PARSE:\n#{e.message} from #{tds.to_html}"
+            raise e
           end
         end
       end

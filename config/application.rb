@@ -8,10 +8,11 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv.overload '.env.test' if ENV['RAILS_ENV'].include? 'test'
-Dotenv.overload '.env' if ENV['RAILS_ENV'].include? 'development'
+Dotenv.overload '.env.test' if Rails.env.test?
+Dotenv.overload '.env' if !Rails.env || Rails.env.development?
 
 module MinutesMaid
+  ##
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2

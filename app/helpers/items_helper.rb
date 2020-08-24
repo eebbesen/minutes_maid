@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# decorate Item
+## decorate Item
 module ItemsHelper
   class << self
     def loc_link(item)
