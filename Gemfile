@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'actionpack', '>= 5.2.4.3'
 gem 'activestorage', '>= 5.2.4.3'
 gem 'activesupport', '>= 5.2.4.3'
+gem 'ahoy_matey'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'font-awesome-rails'

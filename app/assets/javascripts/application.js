@@ -16,4 +16,5 @@
 //= require jquery
 //= require_tree .
 //= require foundation
+//= require ahoy
 $(function(){ $(document).foundation(); });

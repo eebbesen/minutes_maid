@@ -8,8 +8,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv.overload '.env.test' if ENV['RAILS_ENV'].include? 'test'
-Dotenv.overload '.env' if ENV['RAILS_ENV'].include? 'development'
+Dotenv.overload '.env.test' if ENV.has_key?('RAILS_ENV') && ENV['RAILS_ENV'].include?('test')
+Dotenv.overload '.env' if !ENV.has_key?('RAILS_ENV') || ENV['RAILS_ENV'].include?('development')
 
 module MinutesMaid
   class Application < Rails::Application

@@ -6,6 +6,7 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
+    ahoy.track 'MeetingsController'
     @meetings = Meeting.all.order(date: :desc).order(:name)
   end
 

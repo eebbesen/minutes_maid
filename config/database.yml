@@ -32,10 +32,12 @@ default: &default
 development:
   <<: *default
   database: minutesmaid_development
+  host: localhost
 
 test:
   <<: *default
   database: minutesmaid_test
+  host: localhost
 
 production:
   database: minutesmaid_prod
