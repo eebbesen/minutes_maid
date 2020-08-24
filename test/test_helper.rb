@@ -8,6 +8,8 @@ SimpleCov.start 'rails' do
   add_filter 'app/jobs/application_job.rb'
   add_filter 'app/mailers/application_mailer.rb'
 end
+
+# Webdrivers::Chromedriver.update # this will auto-update chromedriver version
 puts "*************** Chromedriver version: #{Webdrivers::Chromedriver.current_version} ***************"
 Webdrivers::Chromedriver.required_version = ENV['CHROMEDRIVER_VERSION']
 
@@ -31,9 +33,11 @@ Google::Maps.configure do |config|
   config.api_key = ENV['MM_GOOGLE_API_KEY']
 end
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+module ActiveSupport
+  class TestCase
+    # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+    fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+    # Add more helper methods to be used by all tests here...
+  end
 end
