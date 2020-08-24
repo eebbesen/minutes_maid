@@ -37,7 +37,7 @@ development:
 test:
   <<: *default
   database: minutesmaid_test
-  # host: localhost
+  host: localhost
 
 production:
   database: minutesmaid_prod
