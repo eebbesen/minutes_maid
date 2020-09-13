@@ -5,6 +5,7 @@ require 'test_helper'
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @item = items(:item_one)
+    @items = items(:item_one, :item_two, :item_three, :item_four)
   end
 
   test 'should get index' do
@@ -33,6 +34,16 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show item' do
     get item_url(@item)
+    assert_response :success
+  end
+
+  test 'should return csv content' do
+    # Note: success required adding show.csv.erb even though that file was not required for a functional human test,
+    # so I have reservations about the quality of this test.
+
+    # Also, admittedly this test is not very deep. I experimented with ways to actually test the CSV output, but I
+    # didn't learn enough yet to accomplish that
+    get item_url(@items), params: { format: 'csv' }
     assert_response :success
   end
 end

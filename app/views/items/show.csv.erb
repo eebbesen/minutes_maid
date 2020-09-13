@@ -1,0 +1,39 @@
+<h1><%= @item.name %></h1>
+
+<p>
+  <strong>File number:</strong>
+  <%= @item.file_number %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @item.item_type %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @item.action %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @item.result %>
+</p>
+
+<p>
+  <strong>Meeting:</strong>
+  <%= @item.meeting.name %> on <%= @item.meeting.date %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @item.version %>
+</p>
+
+<br/>
+<%= link_to (fa_icon('arrow-left') + ' Back'), items_path %>

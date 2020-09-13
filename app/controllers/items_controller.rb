@@ -12,6 +12,11 @@ class ItemsController < ApplicationController
              else
                Item.all.sort_by { |i| i.meeting.date }.reverse
              end.reject { |i| i.file_number.nil? }
+
+    respond_to do |format|
+      format.html
+      format.csv { process_csv_file(export_as_csv) }
+    end
   end
 
   # GET /items/1
@@ -23,6 +28,18 @@ class ItemsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def export_as_csv
+    CsvExports::ItemsExportService.new(@items, 'index').to_csv
+  end
+
+  def process_csv_file(csv)
+    date_time = DateTime.now.to_s
+    send_data csv,
+              type: 'text/csv; charset=iso-8859-1; header=present',
+              disposition: 'attachment',
+              filename: 'items_including_notes_' + date_time + '.csv'
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

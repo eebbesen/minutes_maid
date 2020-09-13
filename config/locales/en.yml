@@ -31,3 +31,4 @@
 
 en:
   hello: "Hello world"
+  export_csv: "Download as CSV"
