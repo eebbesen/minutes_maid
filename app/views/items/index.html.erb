@@ -26,6 +26,12 @@
   </div>
 </section>
 
+<section class="table-actions">
+  <div class="button-group buttons-right">
+    <%= link_to(t('export_csv'), request.params.merge(format: 'csv'), class: 'button hollow header-button', id: 'export-csv-button') %>
+  </div>
+</section>
+
 <table>
   <thead>
     <tr>
