@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# This is the data seeding script.
+
+echo '-------------------------------------------------------'
+echo 'BEGIN: docker-compose run web bin/rake db:migrate:reset'
+echo '-------------------------------------------------------'
+docker-compose run web bin/rake db:migrate:reset
+wait
+echo '-----------------------------------------------------'
+echo 'END: docker-compose run web bin/rake db:migrate:reset'
+echo '-----------------------------------------------------'
+
+echo '--------------------------------------------------------'
+echo 'BEGIN: docker-compose run web bin/rake scrape_saint_paul'
+echo '--------------------------------------------------------'
+docker-compose run web bin/rake scrape_saint_paul
+wait
+echo '------------------------------------------------------'
+echo 'END: docker-compose run web bin/rake scrape_saint_paul'
+echo '------------------------------------------------------'
