@@ -28,7 +28,6 @@ VCR.configure do |config|
   config.default_cassette_options = { erb: true }
 end
 
-# this key is not valid but referenced by VCR cassettes
 ENV['MM_GOOGLE_API_KEY'] = 'ABCDEF'
 Google::Maps.configure do |config|
   config.authentication_mode = Google::Maps::Configuration::API_KEY
