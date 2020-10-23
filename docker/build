@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
-# This script builds the Docker container, seeds the app with sample data, and logs the screen output.
+# This script builds the Docker container, seeds the app with sample data, tests the app, and logs the screen output.
+
+sudo rm -rf tmp/db
 
 DATE=`date +%Y%m%d-%H%M%S-%3N`
 docker/build-log 2>&1 | tee log/build-$DATE.log
-docker/test
+docker/test-log 2>&1 | tee log/test-$DATE.log
 docker/seed 2>&1 | tee log/seed-$DATE.log
