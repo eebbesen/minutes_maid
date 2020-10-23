@@ -5,4 +5,5 @@ set -e
 
 DATE=`date +%Y%m%d-%H%M%S-%3N`
 docker/build-log 2>&1 | tee log/build-$DATE.log
+docker/test
 docker/seed 2>&1 | tee log/seed-$DATE.log
