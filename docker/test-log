@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo '------------------------------------------------------'
+echo 'BEGIN: docker-compose run web bin/rake db:test:prepare'
+echo '------------------------------------------------------'
+docker-compose run web bin/rake db:test:prepare
+echo '----------------------------------------------------'
+echo 'END: docker-compose run web bin/rake db:test:prepare'
+echo '----------------------------------------------------'
+
+echo '--------------------------------------------'
+echo 'BEGIN: docker-compose run web bin/rails test'
+echo '--------------------------------------------'
+docker-compose run web bin/rails test
+echo '------------------------------------------'
+echo 'END: docker-compose run web bin/rails test'
+echo '------------------------------------------'
