@@ -3,10 +3,10 @@ jobs:
   build:
     branches:
       ignore:
-        - xx
+        - 'xx'
     working_directory: ~/project
     docker:
-      - image: circleci/ruby:2.5.3-browsers
+      - image: cimg/ruby:3.0.2-browsers
         environment:
           POSTGRES_HOST_AUTH_METHOD: trust
     steps:
