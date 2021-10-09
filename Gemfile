@@ -3,13 +3,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'puma', '>= 4.3.3'
 gem 'rack', '>= 2.0.8'
-gem 'rails', '~> 5.2.4.3'
-gem 'rails-html-sanitizer', '~> 1.0.3'
+gem 'rails', '= 6.0.4'
+gem 'rails-html-sanitizer', '>= 1.2.0'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -36,17 +36,20 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'actionpack', '>= 5.2.4.3'
-gem 'activestorage', '>= 5.2.4.3'
-gem 'activesupport', '>= 5.2.4.3'
+gem 'actionpack', '=6.0.4'
+gem 'activestorage', '= 6.0.4'
+gem 'activesupport', '= 6.0.4'
 gem 'ahoy_matey'
 gem 'autoprefixer-rails'
+gem 'concurrent-ruby', require: 'concurrent'
+gem 'concurrent-ruby-ext'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'google-maps'
 gem 'jquery-rails'
 gem 'loofah', '>= 2.3.1'
+gem 'msgpack'
 gem 'recaptcha'
 gem 'sprockets-es6'
 
@@ -58,12 +61,12 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'mocha'
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'rubocop'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
